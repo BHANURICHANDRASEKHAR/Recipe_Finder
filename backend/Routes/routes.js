@@ -6,14 +6,15 @@ const {Update_user}=require('../Controllers/User_Update.js');
 const {Mail}=require('../Controllers/Mail.js');
 const {getOTP}=require('../Controllers/getotp.js');
 const {Add_comments}=require('../Controllers/comments.js');
-
+const {send_data}=require('../Controllers/send_data.js');
 const Recipies=require('../Models/recipes.js');
 
     
 const users=require('../Models/users.js');
 
 //get routes
-router.get('/get',async(req, res)=>{res.json(await Recipies.find())})
+//http://localhost:5000/v1/get/:type
+router.get('/get/:type',send_data);
 
 
 
