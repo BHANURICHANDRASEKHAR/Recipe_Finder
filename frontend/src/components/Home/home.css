@@ -1,0 +1,141 @@
+.homepage{
+    background-color: #FF6347;
+    user-select: none;
+}
+.img{
+    width: 100%;
+    object-fit: contain;
+    filter: invert(6%);
+}
+/* .background-image{
+   position: absolute;
+   top:1%;
+   left:-15%;
+   transform: translate(-50%,-50%);
+   transform: rotate(30deg);
+} */
+.img1{
+    background-image: url('../../assets/freshmint.png');
+    height: 10%;
+    width: 10%;
+}
+.span1{
+    position: absolute;
+    top:8%;
+    left: 0;
+    transform: rotate(190deg);
+    height: 180px;
+    width: 220px;
+   background-image: url('../../assets/freshmint.png');
+}
+.span2{
+    position: absolute;
+     top:78.88%;
+     left: 72.8%;
+     height: 180px;
+     width: 180px;
+  
+    background-image: url('../../assets/freshmint.png');
+}
+.card-data{
+   
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:30px;
+   
+}
+.card-data-items{
+    cursor: pointer;
+    background-color: #ebebeb;
+    box-shadow: 0 29px 52px rgba(0,0,0,0.30), 0 25px 16px rgba(0,0,0,0.20);
+    padding: auto;
+    border-radius: 5%;
+}
+.card-data h5{
+  color: black;
+  text-align: center;
+  padding: auto;
+  text-transform: capitalize;
+  margin: 10px;
+}
+.card-data .card-img img{
+    position: relative;
+    width: 100%;
+    height: 80%;
+  
+    filter: brightness(100%);
+    filter:drop-shadow(1px 1px 1px #000000);
+    object-fit: contain;
+   
+}
+.chef-img{
+    position: relative;
+    z-index: 3;
+    margin-left: 10%;
+    /* filter:drop-shadow(10px 12px 10px #53EC62); */
+    filter:drop-shadow(5px 5px 10px black);
+
+}
+.chef{
+    position: absolute;
+    transform: translateY(40%);
+     width: 300px;
+    height: 300px;
+    z-index: 1;
+    opacity: 1;
+    margin-left: 12%;
+    background-color:#53EC62;
+    border-radius: 50% 69% 44% 56% / 76% 57% 43% 24% ;
+}
+.avatar{
+    height: 43px;
+    width: 43px;
+    border-radius: 50%;
+   margin: 5px;
+    border: 1px solid black;
+   background-size: contain;
+}
+.card-body p{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.chef::after{
+    position: relative;
+    content: ' 🥵 hot spicy foods 🌶 ';
+    height: 40px;
+    padding:12px;
+    font-weight: 600;
+    font-display:initial;
+    text-transform: capitalize;
+    border-radius:18px 10px 20px 0px;
+   margin-left: 20px;
+    border: 1px solid black;
+    background-color: white;
+    top:10%;
+   left:90%;
+   font-size: large;
+    color: red;
+}
+@media (max-width:600px){
+    .card-data{
+       display: grid;
+       grid-template-columns: repeat(2,1fr);
+       gap:10px;
+    }
+    .chef{
+        position: absolute;
+        transform: translateY(40%);
+         width: 300px;
+        height: 300px;
+        z-index: 1;
+        opacity: 1;
+        margin-left: -2%;
+        background-color:#53EC62;
+        border-radius: 50% 69% 44% 56% / 76% 57% 43% 24% ;
+    }
+    .chef-img{
+        margin-left: -2%;
+    }
+    .chef::after{
+      display: none;
+    }
+}

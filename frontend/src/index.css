@@ -5,13 +5,13 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424 !important;
+  background-color: #242424;
    overflow-x: hidden;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+  font-family:'Times New Roman', Times, serif;
 }
 
 a {
@@ -24,5 +24,10 @@ a {
 body {
   margin: 0;
  min-height: 100vh;
+ color: white;
+ background-color: #242424;
 }
 
+.homepage{
+  background-color: #ee5812;
+}
