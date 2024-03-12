@@ -8,7 +8,6 @@ export const carddata=[
    { _id: 'biryani', count: 25, name: 'biryani',img:biryani },
    { _id: 'sweets', count: 20, name: 'sweets',img:sweets },
 
-
   ]
   
 

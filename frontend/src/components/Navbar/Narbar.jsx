@@ -68,7 +68,7 @@ import './navbar.css'
 export default function Narbar() {
   const [flag,setflag]=useState(true)
   return (
-  <div className='container-fluid homepage p-2'>
+  <div className='container-fluid homepage '>
   <div className="nav container bg-transparent ">
   <input type="checkbox" id="nav-check" />
   <div className="nav-header">
@@ -84,14 +84,14 @@ export default function Narbar() {
     </label>
   </div>
 
-  <div className="nav-links1 ">
+  <div className="nav-links1  ">
     <NavLink to="/"> Home</NavLink>
     <NavLink to='/recipes'>Recipes</NavLink>
      <NavLink to='/about'>About Us</NavLink>
 
     <button className='btn btn-outline-info m-3'>logout</button>
    
-        <NavLink to="/login">Login</NavLink>
+     <NavLink to="/login">Login</NavLink>
 
   </div>
 </div> 

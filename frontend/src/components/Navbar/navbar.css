@@ -1,11 +1,10 @@
    
 .nav{
-    height: max-content;
+    height: fit-content;
     width: 100%;
     background:transparent;
-   
     position: relative;
-   display: flex; 
+    display: flex; 
    justify-content: space-between;
   }
   
@@ -33,10 +32,10 @@
   
   .nav> .nav-links1 > a {
     display: inline-block;
-    padding: 13px 10px 13px 10px;
+    padding: 1.8rem;
     text-decoration: none;
     color: white !important;
-  
+     
     justify-content: space-between;
     cursor: pointer;
     position: relative;

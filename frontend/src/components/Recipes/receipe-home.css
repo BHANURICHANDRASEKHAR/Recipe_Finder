@@ -1,0 +1,122 @@
+.card-data{
+   
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:30px;
+   
+}
+.card-data-items1{
+    height: fit-content;
+    cursor: pointer;
+    background-color:transparent;
+    border-radius: 10px;
+    transition: transform 2s ease-in-out ;
+    transform: scale(1);
+}
+.card-data-items1:hover{
+    transform: scale(0.92);
+}
+.card-data-items1 .card-img1 img{
+    position: relative;
+    height:14rem;
+    width: 16rem;
+    border-radius: 10px;
+   object-fit:cover;
+    filter: brightness(100%);
+    filter:drop-shadow(1px 1px 1px #000000);
+   
+}
+.card-title1{
+    font-size:1rem;
+    font-weight: 600;
+    text-wrap: wrap;
+    color: #53EC62;
+}
+.sort{
+    height:max-content;
+    margin-left: 16px;
+    width: 180px !important;
+  font-size: 24px;
+   text-align: center;
+ color:black;
+    background-color: #e5e5e5
+}
+.sortfun{
+    text-indent: 10px;
+    font-weight: 600;
+    font-size: 25px;
+    position: relative;
+}
+.sortfun::before{
+    content: '';
+    position: absolute;
+    left:10%;
+    top: 4.8%;
+    height:20px;
+    border: 3px solid orange;
+
+    border-radius: 15px;
+}
+.input
+{
+    height: 18px;
+    background: transparent;
+    border: 1px solid black;
+    width: 16px;
+    accent-color: orange;
+   
+  
+}
+.display{
+    font-size: 24px;
+    text-transform: capitalize;
+}
+.search{
+    background-color: white;
+    outline: none;
+    color: #000000;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid gray;
+}
+.tr{
+    height:100px;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+.tr:hover{
+    background-color: #e5e5e5;
+}
+.tr td{
+    padding: 10px;
+}
+.tr td img{
+    position: relative;
+    height:4rem;
+    width: 4rem;
+    border-radius: 5px;
+   object-fit:cover;
+    filter: brightness(100%);
+    filter:drop-shadow(1px 1px 1px #000000);
+}
+@media (max-width:600px){
+    .card-data{
+       display: grid;
+       grid-template-columns: repeat(2,1fr);
+       margin: 0;
+       gap:5px;
+    }
+    .card-data-items1 .card-img1 img{
+        position: relative;
+        height:12rem;
+        width: 10rem;
+        filter: brightness(100%);
+        
+       
+    }
+    .card-data-items1:hover{
+        transform: scale(1);
+    }
+}

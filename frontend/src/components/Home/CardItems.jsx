@@ -1,6 +1,6 @@
 import React from 'react'
 import { carddata } from './data'
-
+import { Link } from 'react-router-dom'
 export default function CardItems() {
   return (
     <div className='container mt-4' >    <div className='row'>
@@ -11,12 +11,15 @@ export default function CardItems() {
         carddata.map((data)=>{
             return(
              <div className='card-data-items mt-3' key={data.id}>
+             <Link to={`/recipe/${data._id}`}>
              <div className='card-img'>
              <img src={data.img}/>
              </div>
              <div className='card-body'>
              <h5 className='card-title'>{data.name}</h5>
              </div>
+             </Link>
+         
              </div>
             )
         })
