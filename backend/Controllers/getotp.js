@@ -3,7 +3,7 @@ const otp = require('otp-generator');
 exports.getOTP=async(req,res,next)=>{
     try{
    const t=otp.generate(4, { lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars: false });
-   console.log(t);
+//    console.log(t);
     req.app.locals.OTP=t;
     next();
     }catch(err){
