@@ -8,7 +8,7 @@ app.use(cors(
     {
         origin:"*",
     }
-))
+));
 
 
  const MongooDB=require("./Configurations/mongoDb.js")

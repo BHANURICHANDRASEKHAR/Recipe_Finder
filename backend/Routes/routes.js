@@ -21,14 +21,27 @@ router.get('/get',data.send_data);
 
 
 //post routes
+//http://localhost:5000/v1/sign_up
 router.post('/sign_up',Authenticate.Sign_up);
+
+//http://localhost:5000/v1/sign_up
+router.post('/sign_in',Authenticate.Sign_in); 
+
+//http://localhost:5000/v1/mail
 router.post('/mail',getOTP,Mail);
-router.post('/sign_in',Authenticate.Sign_in);  
+
+//http://localhost:5000/v1/Verify
 router.post('/Verify',Authenticate.Auth); 
+
+//http://localhost:5000/v1/contributes
 router.post('/contributes',Add_contributes);  
+
+//http://localhost:5000/v1/comment
 router.post('/comment',Add_comments);
 
 //put routes
+
+//http://localhost:5000/v1/update
 router.put('/update/:id',Update_user);
 
 
