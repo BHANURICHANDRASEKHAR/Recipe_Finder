@@ -11,7 +11,7 @@ export default function CardItems() {
         carddata.map((data)=>{
             return(
              <div className='card-data-items mt-3' key={data.id}>
-             <Link to={`/recipe/${data._id}`}>
+             <Link to={`/recipes/${data._id}`}>
              <div className='card-img'>
              <img src={data.img}/>
              </div>

@@ -7,7 +7,7 @@ export default function Home({actualdata,setactualdata,fulldata}) {
  
     <div className='container mt-4' ><div className='row'>
     <Sort fulldata={fulldata} setactualdata={setactualdata}/>
-   <ItemList actualdata={actualdata}/>
+    <ItemList actualdata={actualdata}/>
     </div>
        </div>
   )

@@ -24,14 +24,12 @@ function Sort({fulldata,setactualdata}) {
   }
   return (
     <React.Fragment>
-     <div className='container'>
-     <div className='row'>
-<div className='col-4'><div className='sort rounded-pill' variant="primary" onClick={handleShow}>Filter <FaFilterCircleXmark/></div>
-</div>
-<div className='col-4'></div>
-<div className='col-4'><Searchbar fulldata={fulldata}/></div>
-</div>
-     </div>
+
+  <div className='col-4'><div className='sort rounded-pill' variant="primary" onClick={handleShow}>Filter <FaFilterCircleXmark/></div>
+ </div>
+ <div className='col-3'></div>
+  <div className='col-4'><Searchbar fulldata={fulldata}/></div>
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title className='text-dark'>Filter</Modal.Title>

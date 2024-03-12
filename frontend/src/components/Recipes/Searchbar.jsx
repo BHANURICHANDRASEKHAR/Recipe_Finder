@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import { CiSearch } from "react-icons/ci";
 import {searchdata} from './fetchdata'
@@ -41,8 +41,8 @@ const ItemsTable=({searchdata})=>{
             searchdata.map((items,index)=>{
                 return(
                     <tr key={index} className='tr'>
-                    <td ><img src={items.img}/></td>
-                    <td>{items.name}</td>
+                    <Link to={`/recipe/${items._id}`}>  <td ><img src={items.img}/></td>
+                    <td>{items.name}</td></Link>
                     </tr>
                 )
             })
