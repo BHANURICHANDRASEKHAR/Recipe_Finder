@@ -15,7 +15,7 @@ export default function Home({actualdata,setactualdata,fulldata}) {
 }
 export const ItemList=({actualdata})=>{
   return(
-    <div className='col card-data-items'>
+    <div className='col card-data-items111'>
 
     {
      actualdata.map((data,index)=>{

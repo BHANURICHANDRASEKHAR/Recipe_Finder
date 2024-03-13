@@ -8,9 +8,9 @@ export default function CardItems() {
     <div className='col card-data'>
 
     {
-        carddata.map((data)=>{
+        carddata.map((data,index)=>{
             return(
-             <div className='card-data-items mt-3' key={data.id}>
+             <div className='card-data-items mt-3' key={index}>
              <Link to={`/recipes/${data._id}`}>
              <div className='card-img'>
              <img src={data.img}/>

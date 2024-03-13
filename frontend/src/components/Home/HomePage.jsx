@@ -5,6 +5,7 @@ import leaf from '../../assets/freshmint.png'
 import Testominials from './Testominials'
 import CardItems from './CardItems'
 export default function HomePage() {
+  console.log('home Page')
   return (
    <React.Fragment>
    <Content/>

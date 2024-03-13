@@ -16,7 +16,6 @@ function Sort({fulldata,setactualdata}) {
   {
     settargetvalue(e.target.value)
   }
-  console.log(targetvalue)
   function submit()
   {
     filtereddata(fulldata,setactualdata,targetvalue)

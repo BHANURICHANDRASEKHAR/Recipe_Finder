@@ -3,6 +3,7 @@ import DataItmes from './CardItemsdata'
 import './receipe-home.css'
 import fetchdata from './fetchdata';
 export default function Home() {
+  console.log('Recipes Page')
   const [actualdata,setactualdata]=useState([])
   const [fulldata,setfulldata]=useState([])
      

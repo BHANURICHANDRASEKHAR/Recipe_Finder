@@ -4,6 +4,7 @@ import { ItemList } from "../CardItemsdata";
 import {gettypedata} from '../fetchdata'
 import Searchbar from "../Searchbar";
 export default function Home() {
+  console.log('recipe type page')
     const {type}=useParams();
     const [fulldata,setfulldata]=useState([]);
      useEffect(()=>{
