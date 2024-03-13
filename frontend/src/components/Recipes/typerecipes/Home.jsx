@@ -6,12 +6,14 @@ import Searchbar from "../Searchbar";
 import Loader from "../../../Loader";
 export default function Home() {
   console.log('recipe type page')
+
     const {type}=useParams();
     const [fulldata,setfulldata]=useState([]);
     const [loader,setloader]=useState(false)
      useEffect(()=>{
-     
+
         gettypedata(setfulldata,type,setloader)
+        
     },[])
   return (
     <div className='container mt-4' ><div className='row'> 

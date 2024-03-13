@@ -10,6 +10,7 @@ export function success(msg)
 //          }
 //        );
 // }
+
 toast.success('Successfully toasted!')
 }
 export function promisefunction(myPromise)

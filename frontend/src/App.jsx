@@ -5,6 +5,7 @@ import AOS from 'aos'
 import { useEffect } from 'react'
 import Footer from './Footer'
 export default function App() {
+  
   useEffect(() => {
     AOS.init({ 
        duration: 2000
