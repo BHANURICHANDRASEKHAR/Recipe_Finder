@@ -9,14 +9,12 @@ export const data = [
 ];
 
 
-export async function chagelaunge(languageData, setLanguageData) {
-  console.log('dj');
+export async function chagelaunge(languageData, setLanguageData,currentLanguage,setCurrentLanguage,target_language) {
 
   const url = 'https://text-translator2.p.rapidapi.com/translate';
 
   let list=[languageData.data1,languageData.data2];
   var l1=[];
-   const keys=['data1','data2']
   try {
     const translations = await Promise.all(
       list.map(async (ele, index) => {
@@ -28,8 +26,8 @@ export async function chagelaunge(languageData, setLanguageData) {
             'X-RapidAPI-Host': 'text-translator2.p.rapidapi.com'
           },
           body: new URLSearchParams({
-            source_language: 'en',
-            target_language: 'te',
+            source_language: currentLanguage,
+            target_language: target_language,
             text: ele
           })
         };
@@ -48,8 +46,8 @@ export async function chagelaunge(languageData, setLanguageData) {
       })
     );
     console.log(l1);
-    setLanguageData({"data1":l1[0] ,"data2":l1[1]})
-
+    setLanguageData({"data2":l1[0] ,"data1":l1[1]})
+   setCurrentLanguage(target_language)
     
   } catch (error) {
     console.error(error.message);
@@ -62,9 +60,9 @@ export  async function fetchdatafromdatabase(setdata,id)
  try{
   const result=await axios.get(`http://localhost:5000/v1/getId/${id}`);
   
-  const data=await result.data.data
+  const data=await result.data.data;
     
-    setactualdata(result)
+    setdata(data)
  }
  catch (error) {console.log(error.message);}
 

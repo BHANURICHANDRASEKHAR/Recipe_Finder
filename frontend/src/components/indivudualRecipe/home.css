@@ -1,1 +1,90 @@
+.item-name{
+    display: inline;
+    font: inherit;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   color: white;
+  text-shadow: 3px 4px 5px solid black;
+  background-color:#ee5812;    
+  padding: 10px;
+  border-radius: 0px 30px 0px 0px;
+ position: relative;
+}
 
+.item-name::after{
+    position: absolute;
+    content: '';
+  
+    background-color: rgb(244, 243, 243);
+    height: 100%;
+    transform: skewX(0.56turn);
+    width:100px;
+    top:0;
+    right: 0;
+    
+}
+.icons{
+    font-size:30px;
+    margin-right: 5px;
+    font-weight:bold;
+}
+.icon1{
+    font-size: 30px;
+    color: #ee5812;
+}
+.chart{
+    height: inherit;
+    width: inherit;
+    object-fit: contain;
+    filter: brightness(120%);
+}
+.recipe-img{
+    height:inherit;
+ 
+    width: 100%;
+    object-fit: contain;
+ border-radius: 10px;}
+ .card-data1{
+    display: flex;
+    overflow-x: scroll;
+    gap:15px;
+    scroll-snap-type: x proximity;
+   
+}
+.card-data-items2{
+    height: fit-content;
+    cursor: pointer;
+    background-color:transparent;
+    border-radius: 10px;
+    transition: transform 2s ease-in-out ;
+    transform: scale(1);
+}
+.card-data-items2:hover{
+    transform: scale(0.92);
+}
+.card-data-items2 .card-img2 img{
+    position: relative;
+    height:10rem;
+    width: 12.5rem;
+    border-radius: 10px;
+    object-fit:cover;
+    filter: brightness(100%);
+    filter:drop-shadow(1px 1px 1px #000000);
+   
+}
+::-webkit-scrollbar {
+    display:none;
+  }
+@media (max-width:600px){
+   
+    .card-data-items2 .card-img2 img{
+        position: relative;
+        height:8rem;
+        width: 8rem;
+        filter: brightness(100%);
+        
+       
+    }
+    .card-data-items2:hover{
+        transform: scale(1);
+    }
+}

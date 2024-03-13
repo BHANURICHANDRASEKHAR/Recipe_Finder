@@ -22,9 +22,10 @@ export function  filtereddata(fulldata,setactualdata,targetvalue)
 }
 export  async function gettypedata(setactualdata,type)
 {
+    console.log('hello',type)
     const data=await axios.get(`http://localhost:5000/v1/get/${type}`);
     const result=await data.data.data
-    
+    console.log(result)
     setactualdata(result)
     
 }

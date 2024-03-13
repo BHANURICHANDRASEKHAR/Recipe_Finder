@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react'
+import {Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import { CiSearch } from "react-icons/ci";
 import {searchdata} from './fetchdata'
@@ -27,9 +27,13 @@ export default function Searchbar({fulldata}) {
   )
 }
 const SearchbarIcons=({setsearchdata,fulldata})=>{
+    const ref=useRef()
+    useEffect(()=>{
+    ref.current.focus()
+    },[])
     return(
         <div className='row'>
-        <input type='search'   className='search' placeholder='Search for Food' onChange={(e)=>searchdata(setsearchdata,fulldata,e.target.value)}></input>
+        <input type='search' ref={ref}  className='search' placeholder='Search for Food' onChange={(e)=>searchdata(setsearchdata,fulldata,e.target.value)}></input>
         </div>
     )
 }
@@ -40,8 +44,10 @@ const ItemsTable=({searchdata})=>{
          {
             searchdata.map((items,index)=>{
                 return(
-                    <tr key={index} className='tr'>
-                    <Link to={`/recipe/${items._id}`}>  <td ><img src={items.img}/></td>
+                   
+                    <tr className='tr'>
+                    <Link to={`/recipe/${items._id}`} className='text-dark'  key={index}> 
+                     <td ><img src={items.img}/></td>
                     <td>{items.name}</td></Link>
                     </tr>
                 )

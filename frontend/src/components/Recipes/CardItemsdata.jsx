@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import Sort from './Model';
+import { FaDirections } from "react-icons/fa";
 export default function Home({actualdata,setactualdata,fulldata}) {
 
   return (
@@ -14,21 +15,23 @@ export default function Home({actualdata,setactualdata,fulldata}) {
 }
 export const ItemList=({actualdata})=>{
   return(
-    <div className='col card-data'>
+    <div className='col card-data-items'>
 
     {
      actualdata.map((data,index)=>{
             return(
-             <div className='card-data-items1 mt-3' key={index}>
+              <Link to={`/recipe/${encodeURIComponent(data._id)}-${encodeURIComponent(data.type)}`}  key={index}>
+   
+             <div className='card-data-items1 mt-3'>
              
              <div className='card-img1'>
              <img src={data.img} />
              </div>
-             <div className='card-body'>
-             <h5 className='card-title1 text-white'>{data.name}</h5>
+             <div className='card-title1'>
+             <h5 className='text-white'>{data.name} </h5>
              </div>
           
-             </div>
+             </div>           </Link>
             )
         })
     }
