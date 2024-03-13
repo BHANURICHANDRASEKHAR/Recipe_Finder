@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 export default function RelatedProducts({type}) {
 
     const [data,setdata]=useState([])
+    const [loader,setloader]=useState(false)
   useEffect(()=>{
-    gettypedata(setdata,type)
-  },[type])
+    gettypedata(setdata,type,setloader)
+  },[])
 
   return(
     <React.Fragment>
@@ -27,7 +28,7 @@ export default function RelatedProducts({type}) {
         <h5 className='text-white text-center'>{links.name}</h5>
         </div>
      
-        </div>      </Link>
+        </div>  </Link>
       )
     })
   }

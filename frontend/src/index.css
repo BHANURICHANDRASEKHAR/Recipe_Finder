@@ -31,3 +31,11 @@ body {
 .homepage{
   background-color: #ee5812;
 }
+.loader img{
+  width:200px;
+  height: 200px;
+ 
+
+ 
+  user-select: none;
+}

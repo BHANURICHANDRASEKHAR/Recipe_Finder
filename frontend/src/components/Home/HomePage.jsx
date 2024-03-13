@@ -1,9 +1,9 @@
 import React from 'react'
 import './home.css'
 import home from '../../assets/home1.png'
-import leaf from '../../assets/freshmint.png'
 import Testominials from './Testominials'
 import CardItems from './CardItems'
+import Loader from '../../Loader'
 export default function HomePage() {
   console.log('home Page')
   return (
@@ -11,6 +11,7 @@ export default function HomePage() {
    <Content/>
    <CardItems/>
    <Testominials/>
+
    </React.Fragment>
   )
 }

@@ -74,6 +74,71 @@
 ::-webkit-scrollbar {
     display:none;
   }
+  .savebutton{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 40px;
+    width: 40px;
+   
+   
+        cursor: pointer;
+    color:rgb(93, 89, 89);
+  }
+  .review-card-parent{
+    background-color:  #dadce0;
+    color: black;
+    padding:5%;
+    border-radius: 5px;
+  }
+  .review-card{
+  padding: 1%;
+  }
+.show-card{
+    padding:10px;
+}
+/* .show-card p{
+    text-wrap: wrap;
+    width: 90%;
+} */
+.show-card-ratings{
+    transition: all 5000s ease-in-out;
+
+}
+  .textarea {
+    background-color: transparent;
+    color: black;
+    outline: none;
+    border: none;
+    margin: 0%;
+  
+    width: 90%;
+
+  }
+  .user-review{
+    height: max-content;
+    display: grid;
+    grid-template-columns: 0.2fr 1fr; 
+   
+    padding: 10px;
+    border-top: 1px solid black;
+   
+  }
+  .user-icon{
+    margin-top: 10%;
+    border-radius: 50%;
+  }
+ .content-p{
+  text-wrap: nowrap;
+ }
+  .border-top1{
+    border-top: 1px solid black;
+  }
+  .like{
+    font-size: 24px;
+    
+    cursor: pointer;
+  }
 @media (max-width:600px){
    
     .card-data-items2 .card-img2 img{
@@ -87,4 +152,7 @@
     .card-data-items2:hover{
         transform: scale(1);
     }
+    .review-card-parent{
+       padding: 5%;
+      }
 }

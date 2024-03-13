@@ -11,9 +11,9 @@ export default function Testominials() {
     <div className='col-sm-6 text-dark mt-5'>
     <h4 className='text-danger'>Testominials</h4>
     <h3>What Our Customers Say About Us</h3>
-    <div className='card-body text-justify w-100 text-wrap'>    <p >  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper quam quis augue commodo, id aliquet libero sodales. Maecenas convallis elit luctus diam suscipit pulvinar quis et metus. Morbi a quam sollicitudin, luctus erat a, venenatis nisi. Sed rhoncus et sapien in ornare. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus tincidunt, magna sit amet efficitur finibus, enim odio sodales velit, ac varius turpis  Nullam vehicula mauris eget quam efficitur, vel congue augue a varius gravida. Vestibulum nulla quam, dictum egestas blandit at, sagittis non odio. Nunc et ornare arcu. Pellentesque ipsum est, ultricies sed vulputate at, varius vel elit. Etiam congue blandit metus, vitae congue erat pharetra sit amet.r.    </p>
+    <div className='card-body text-justify w-100 text-wrap'> <p style={{textWrap:'pretty'}}>  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper quam quis augue commodo, id aliquet libero sodales. Maecenas convallis elit luctus diam suscipit pulvinar quis et metus. Morbi a quam sollicitudin, luctus erat a, venenatis nisi. Sed rhoncus et sapien in ornare. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus tincidunt, magna sit amet efficitur finibus, enim odio sodales velit, ac varius turpis  Nullam vehicula mauris eget quam efficitur, vel congue augue a varius gravida. Vestibulum nulla quam, dictum egestas blandit at, sagittis non odio. Nunc et ornare arcu. Pellentesque ipsum est, ultricies sed vulputate at, varius vel elit. Etiam congue blandit metus, vitae congue erat pharetra sit amet.r.    </p>
     </div>
-   <Avatar/>
+    <Avatar/>
     </div>
     </div>
     </div>

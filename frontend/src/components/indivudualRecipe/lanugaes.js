@@ -9,10 +9,9 @@ export const data = [
 ];
 
 
-export async function chagelaunge(languageData, setLanguageData,currentLanguage,setCurrentLanguage,target_language) {
-
+export async function chagelaunge(languageData, setLanguageData,currentLanguage,setCurrentLanguage,target_language,setloader) {
+ setloader(true)
   const url = 'https://text-translator2.p.rapidapi.com/translate';
-
   let list=[languageData.data1,languageData.data2];
   var l1=[];
   try {
@@ -45,11 +44,12 @@ export async function chagelaunge(languageData, setLanguageData,currentLanguage,
         
       })
     );
-    console.log(l1);
+    setloader(false)
     setLanguageData({"data2":l1[0] ,"data1":l1[1]})
    setCurrentLanguage(target_language)
     
   } catch (error) {
+    setloader(false)
     console.error(error.message);
   }
 }

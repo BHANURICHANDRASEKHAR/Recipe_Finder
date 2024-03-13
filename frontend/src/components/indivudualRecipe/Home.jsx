@@ -4,10 +4,11 @@ import Items from './Items';
 import {fetchdatafromdatabase} from './lanugaes'
 import './home.css'
 export default function Home() {
-  console.log('Indivual items Page')
+
 
     const {name}=useParams();
     const params=name.split('-')
+
   const [itemdata,setitemdata]=useState([])
    useEffect(()=>{
   fetchdatafromdatabase(setitemdata,params[0])

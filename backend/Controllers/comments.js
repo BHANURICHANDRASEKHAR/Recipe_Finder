@@ -3,16 +3,15 @@ const Comments=require('../Models/comments.js');
 exports.Add_comments=async(req,res)=>{
     try{
 
-        const {post_id,comments,likes=0,dislikes=0}=req.body;
+        const {post_id,comments,likes=0,rating}=req.body;
+    
         const post= await Comments.findOne({post_id});
 
         if(post){
         
-            const temp={likes:post.likes+likes,dislikes:post.dislikes+dislikes}
+            const temp={likes:post.likes+likes}
             console.log(temp);
-
-            await Comments.updateOne({post_id},{ $push:{'comments':comments},$set:temp}).then((user)=>{
-               
+              await Comments.updateOne({post_id},{ $push:{'comments':comments},$set:temp}).then((user)=>{
                 if (user) {
                         res.status(200).send({status:true,msg:'Commented  successfully:',data:user});
                     } else {
@@ -26,7 +25,7 @@ exports.Add_comments=async(req,res)=>{
                 post_id,
                 comments,
                 likes,
-                dislikes
+                rating
             });
             res.status(200).send({status:true,msg:"Comment successfully Submited"});
 

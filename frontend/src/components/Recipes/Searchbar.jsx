@@ -46,7 +46,8 @@ const ItemsTable=({searchdata})=>{
                 return(
                    
                     <tr className='tr'>
-                    <Link to={`/recipe/${items._id}`} className='text-dark'  key={index}> 
+                    <Link to={`/recipe/${encodeURIComponent(items._id)}-${encodeURIComponent(items.type)}`}  key={index}>
+
                      <td ><img src={items.img}/></td>
                     <td>{items.name}</td></Link>
                     </tr>

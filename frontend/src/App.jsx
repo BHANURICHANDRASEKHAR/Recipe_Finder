@@ -1,7 +1,5 @@
 import React from 'react'
-import tomoto from './assets/tomoto.png'
-import mint from './assets/mint.png'
-import Narbar from './components/Navbar/Narbar'
+import { Toaster } from 'react-hot-toast'
 import Rout from './components/Navbar/Rout'
 import AOS from 'aos'
 import { useEffect } from 'react'
@@ -16,6 +14,10 @@ export default function App() {
     <div>
      <Rout/>
      <Footer/>
+     <Toaster
+     position="bottom-left"
+     reverseOrder={true}
+   />
     </div>
   )
 }
