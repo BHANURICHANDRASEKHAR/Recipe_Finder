@@ -1,18 +1,20 @@
 import axios from "axios";
 import { errorfunction,promisefunction } from "../../toaster";
- export async function getOTP(userdata,setotp,setflag)
+ export async function getOTP(userdata,setisloading,setotp,setflag)
 {
 
    const result=await axios.post('http://localhost:5000/v1/mail',userdata)
-   promisefunction(result)
+   setisloading(true)
    const data=await result.data;
    if(data.status)
    {
-     setotp(data.otp)
-     setflag(true)
+      setisloading(false)
+      setotp(data.otp)
+      setflag(true)
    }
    else{
     errorfunction(data.msg)
+    setisloading(false)
    }
 }
 export async function signup(userdata,setMode)
