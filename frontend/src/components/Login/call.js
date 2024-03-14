@@ -52,8 +52,9 @@ export async function signup(userdata,setMode)
       errorfunction(data.msg)
    }
 }
-export async function signin(userdata,setShow)
+export async function signin(userdata,setShow,setisloading)
 {
+   setisloading(true)
    const user={
        email:userdata.email,
        password:userdata.password
@@ -65,9 +66,12 @@ export async function signin(userdata,setShow)
    if(data.status)
    {
       Cookies.set('usertoken', data.token, { expires: Infinity });
+      setisloading(false)
       setShow(false)
+
    }
    else{
+      setisloading(false)
       errorfunction(data.msg)
    }
 }

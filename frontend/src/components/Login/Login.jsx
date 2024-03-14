@@ -40,7 +40,7 @@ function Login() {
       var isloginvalid= signin_upvalidation(userdata);
       if(isloginvalid)
       {
-        signin(userdata,setShow)
+        signin(userdata,setShow,setisloading)
         
       }
     }
@@ -59,7 +59,7 @@ function otpverication()
     errorfunction('Otp is Invalid try again')
   }
 }
-
+console.log(isLoading)
 
   return (
     <React.Fragment>
@@ -86,8 +86,9 @@ function otpverication()
           disabled={isLoading}
           onClick={!isLoading ? submit : null}
         >
-          {isLoading ? 'Loading…...' : 'Create a Account'}
+        {isLoading ? 'Loading…' : 'Sign In'}
         </Button>  
+       
           <div className='col pt-2 mt-3 text-center' style={{borderTop:'1px solid black',fontSize:'24px'}}>Dont have any Account ? <span style={{cursor:'pointer'}} onClick={()=>{setMode('signup')}}>Signup</span></div>
           </div>
           )}
