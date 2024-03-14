@@ -3,7 +3,7 @@ import { Toaster } from 'react-hot-toast'
 import Rout from './components/Navbar/Rout'
 import AOS from 'aos'
 import { useEffect } from 'react'
-import { UserContext } from './Context/UserContext'
+import UserContUserContextProviderext  from './Context/UserContext'
 import Footer from './Footer'
 
 export default function App() {
@@ -12,9 +12,12 @@ export default function App() {
        duration: 2000
      });
   }, []);
+  console.log("App ca");
 
   return (
+    <UserContUserContextProviderext>
     <App1/>
+    </UserContUserContextProviderext>
     
   )
 }

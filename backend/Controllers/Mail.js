@@ -15,7 +15,6 @@ exports.Mail=async(req,res,next)=>{
 
 
     const {email,name}=req.body;
-    console.log(req.body);
 
     const info=`<!DOCTYPE html>
     <html lang="en">

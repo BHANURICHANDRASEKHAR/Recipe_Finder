@@ -8,9 +8,8 @@ const {getOTP}=require('../Controllers/getotp.js');
 const {Add_comments}=require('../Controllers/comments.js');
 const data=require('../Controllers/send_data.js');
 const Recipies=require('../Models/recipes.js');
-
+const {verify}=require('../Mildwares/verify.js');
     
-const users=require('../Models/users.js');
 
 //get routes
 //http://localhost:5000/v1/get/:type
@@ -35,7 +34,7 @@ router.post('/sign_in',Authenticate.Sign_in);
 router.post('/mail',getOTP,Mail);
 
 //http://localhost:5000/v1/Verify
-router.post('/Verify',Authenticate.Auth); 
+router.post('/Verify',Authenticate.Auth);
 
 //http://localhost:5000/v1/contributes
 router.post('/contributes',Add_contributes);  

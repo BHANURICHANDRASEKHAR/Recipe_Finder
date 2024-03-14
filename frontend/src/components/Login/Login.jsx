@@ -34,7 +34,8 @@ function Login() {
     if (mode === 'signup') {
       var isValid = sign_upvalidation(userdata);
       if (isValid) {
-        getOTP(userdata,setisloading, setOtp, setFlag);
+        getOTP(userdata,setisloading, setOtp, setFlag,setMode);
+        setUserData(initialdata)
       }
     } else {
       var isloginvalid= signin_upvalidation(userdata);
@@ -45,12 +46,12 @@ function Login() {
       }
     }
   }
-function otpverication()
+async function otpverication()
 {
-    console.log('otp is',otp)
+  
   if(otp==userdata.otp)
   {
-    signup(userdata,setMode);
+   await signup(userdata,setMode);
     setUserData(initialdata)
     setFlag(false)
   }

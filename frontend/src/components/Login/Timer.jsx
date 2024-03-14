@@ -32,7 +32,7 @@ export default function Timer({resentotp}) {
     return (
         <div className='col'>
             <h1 className='text-center'>00:{time < 10 ? `0${time}` : time}</h1>
-            <p className='text-center mt-1'>Didn't receive OTP? <button onClick={resetTimer} className='resentbtn' style={{color:setIsActive && time>0?'gray' : 'red'}} disabled={setIsActive && time>0}>Resend Now</button></p>
+            <p className='text-center mt-1'>Didn't receive OTP? <button onClick={resetTimer} className='resentbtn text-gray'  style={{color:setIsActive && time>0?'gray' : 'red'}} disabled={setIsActive && time>0}>Resend Now</button></p>
         </div>
     );
 };
