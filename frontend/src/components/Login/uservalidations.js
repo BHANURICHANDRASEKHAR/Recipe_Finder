@@ -5,7 +5,7 @@ function validateEmail(email) {
   }
 export function sign_upvalidation(userdata)
 {
-if(userdata?.name.trim()==='' || userdata.email.trim()=='' ||  userdata?.password.trim()=='' || userdata?.confirmPassword.trim()=='' )
+if(userdata.name.trim()==='' || userdata.email.trim()=='' ||  userdata.password.trim()=='' || userdata.confirmPassword.trim()=='' )
 {
     errorfunction('Please Fill All Required Fields')
     return false;
@@ -20,18 +20,23 @@ if(userdata?.name.trim()==='' || userdata.email.trim()=='' ||  userdata?.passwor
     return false;
   }
  
-if(userdata.password!==userdata?.confirmPassword)
+if(userdata.password!==userdata.confirmPassword)
 {
   errorfunction('Passwords do not match')
   return false;
 }
 return true;
 }
-// export function signin_upvalidation()
-// {
-//   if(userdata.email.trim()=='' ||  userdata.password.trim()=='' || userdata.confirmPassword.trim()=='' )
-//   {
-//       errorfunction('Please Fill All Required Fields')
-//       return false;
-//   }
-// }
+export function signin_upvalidation(userdata)
+{
+  if(userdata.email.trim()=='' ||  userdata.password.trim()==''  )
+  {
+      errorfunction('Please Fill All Required Fields')
+      return false;
+  }
+  if (!validateEmail(userdata.email)) {
+    errorfunction('Email is not valid!')
+    return false
+  }
+  return true
+}

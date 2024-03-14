@@ -30,8 +30,7 @@ exports.Sign_up=async(req,res)=>{
 exports.Sign_in=async(req,res)=>{
     try{
         const {email,password}=req.body;
-        console.log(req.body);
-
+    
         const user= await users.findOne({email});
       
         if(user){
@@ -45,18 +44,19 @@ exports.Sign_in=async(req,res)=>{
                     user:{
                         id:user.id
                     }}
-                const token= await jwt.sign(payload,"chandu",{expiresIn:"1000"});
+                const token= await jwt.sign(payload,"chandu");
                 res.status(201).send({status:true,token:token,msg:"Login sucessfull"});
                 }   
            
-    
+        
         }else{  
              res.status(200).send({status:false,msg:"User not exited"});
 
         }  
     }
     catch(err){
-        res.send({Error:err.massege});
+       
+        res.send({Error:err.message});
     }
 }
 

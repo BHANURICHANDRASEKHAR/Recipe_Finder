@@ -34,7 +34,7 @@
     display: inline-block;
     padding: 1.8rem;
     text-decoration: none;
-    color: white !important;
+    color: black;
      
     justify-content: space-between;
     cursor: pointer;
@@ -60,7 +60,7 @@
       display: inline-block;
       width: 50px;
       height: 50px;
-      
+      width: 30%;
       padding: 13px;
     }
     .nav> .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
@@ -78,7 +78,7 @@
     .nav> .nav-links1  {
       position: absolute;
       display: block;
-      width: 25%;
+   
       background-color:white;
       height: 0px;
       color: black;
@@ -99,7 +99,7 @@
     }
     .nav> #nav-check:checked ~ .nav-links1 {
       height: calc(60vh - 50px);
-     width: calc(30vh - 50px);
+     width: calc(40vh - 50px);
     }    
   }
   .nav> .nav-links1 > a::after{

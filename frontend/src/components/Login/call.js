@@ -1,4 +1,5 @@
 import axios from "axios";
+import {Cookies} from 'cookies-js'
 import { errorfunction,promisefunction } from "../../toaster";
  export async function getOTP(userdata,setisloading,setotp,setflag)
 {
@@ -57,11 +58,14 @@ export async function signin(userdata,setShow)
        email:userdata.email,
        password:userdata.password
     }
+    console.log(user)
    const result=await axios.post('http://localhost:5000/v1/sign_in',user)
    const data=await result.data;
+   console.log(data)
    if(data.status)
    {
-    setShow(false)
+      Cookies.set('usertoken', data.token, { expires: Infinity });
+      setShow(false)
    }
    else{
       errorfunction(data.msg)

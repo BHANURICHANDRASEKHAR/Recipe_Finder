@@ -1,10 +1,10 @@
 
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import InputFeild from './InputFeild'; 
-import { getOTP,signup } from './call';
-import { sign_upvalidation} from './uservalidations';
+import { getOTP,signup,signin } from './call';
+import { sign_upvalidation,signin_upvalidation} from './uservalidations';
 import SignupInputFeilds from './Signup';
 import { errorfunction } from '../../toaster';
 const initialdata={
@@ -37,7 +37,7 @@ function Login() {
         getOTP(userdata,setisloading, setOtp, setFlag);
       }
     } else {
-      var isloginvalid= sign_upvalidation(userdata);
+      var isloginvalid= signin_upvalidation(userdata);
       if(isloginvalid)
       {
         signin(userdata,setShow)
@@ -64,7 +64,7 @@ function otpverication()
   return (
     <React.Fragment>
       <div className='col-4'>
-        <Button variant="primary" onClick={handleShow}>Login</Button>
+        <button  className='resentbtn' style={{fontSize:'26px',padding:'0rem'}} onClick={handleShow}>Login</button>
       </div>
       <Modal show={show} onHide={handleClose} style={{ marginTop: '80px' }}>
         <Modal.Header closeButton>
