@@ -21,7 +21,7 @@ exports.Sign_up=async(req,res)=>{
     }
     }
     catch(err){
-        res.status(501).send({status:false,Error:err});
+        res.status(501).send({status:false,msg:err.message});
     }
 
 }

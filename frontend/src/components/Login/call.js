@@ -1,7 +1,7 @@
 import axios from "axios";
 import {Cookies} from 'cookies-js'
 import { errorfunction,promisefunction } from "../../toaster";
- export async function getOTP(userdata,setisloading,setotp,setflag)
+ export async function getOTP(userdata,setisloading,setotp,setflag,setMode)
 {
    const result=await axios.post('http://localhost:5000/v1/mail',userdata)
    setisloading(true)
@@ -10,10 +10,12 @@ import { errorfunction,promisefunction } from "../../toaster";
    {
       setisloading(false)
       setotp(data.otp)
+      console.log(data.otp)
       setflag(true)
    }
    else{
     errorfunction(data.msg)
+    setMode('signin')
     setisloading(false)
    }
 }
@@ -48,7 +50,8 @@ export async function signup(userdata,setMode)
       setMode('signin')
    }
    else{
-      errorfunction(data.msg)
+      console.log('error',result)
+      errorfunction(result.msg)
    }
 }
 export async function signin(userdata,setShow,setisloading)
