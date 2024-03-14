@@ -65,6 +65,7 @@ import { GiCancel } from "react-icons/gi";
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import './navbar.css'
+import Login from '../Login/Login';
 export default function Narbar() {
   const [flag,setflag]=useState(true)
   return (
@@ -88,10 +89,10 @@ export default function Narbar() {
     <NavLink to="/"> Home</NavLink>
     <NavLink to='/recipes'>Recipes</NavLink>
      <NavLink to='/about'>About Us</NavLink>
-
+     <button className='bg-transparent border-0'><Login/></button>
     <button className='btn btn-outline-info m-3'>logout</button>
    
-     <NavLink to="/login">Login</NavLink>
+    
 
   </div>
 </div> 

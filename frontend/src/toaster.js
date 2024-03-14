@@ -1,5 +1,5 @@
 import { toast } from 'react-hot-toast'
-export function success(msg)
+export function successfunction(msg)
 {
 //     toast.promise(
 //         saveSettings(settings),
@@ -10,7 +10,6 @@ export function success(msg)
 //          }
 //        );
 // }
-
 toast.success('Successfully toasted!')
 }
 export function promisefunction(myPromise)
@@ -20,4 +19,9 @@ export function promisefunction(myPromise)
         success:'Saved',
         error: 'unSaved',
       });
+}
+export function errorfunction(msg)
+{
+
+toast.error(msg)
 }
