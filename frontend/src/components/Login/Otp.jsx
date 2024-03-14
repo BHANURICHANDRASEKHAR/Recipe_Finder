@@ -1,13 +1,12 @@
 import React from 'react'
 import Timer from './Timer';
-import { getOTP } from './call';
-import Button from 'react-bootstrap/Button';
-
 import InputFeild from './InputFeild';
-export default function Otp({userdata,onchange,otpverication,setFlag,setOtp}) {
+import Button from 'react-bootstrap/Button';
+import {resendotp} from './call';
+export default function Otp({userdata,onchange,otpverication,setOtp}) {
     function resentotp()
     {
-        getOTP(userdata, setOtp, setFlag);
+        resendotp(userdata, setOtp);
     }
     return (
        <div className='container'>
