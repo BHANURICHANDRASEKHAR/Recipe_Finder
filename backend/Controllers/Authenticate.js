@@ -1,11 +1,10 @@
 const users=require('../Models/users.js');
 const jwt =require ('jsonwebtoken');
-const otp = require('otp-generator');
 
 
 exports.Sign_up=async(req,res)=>{
     try{
-        const {username,email,password,user_data,contributes}=req.body;
+        const {username,email,password}=req.body;
         console.log(req.body);
         const user=await users.findOne({email});
         if(user){
@@ -15,9 +14,7 @@ exports.Sign_up=async(req,res)=>{
             
             username,
             email,
-            password,
-            user_data,
-            contributes,
+            password  
             
         });
         res.status(200).send({status:true,data:r,msg:"Sign_up success"});
