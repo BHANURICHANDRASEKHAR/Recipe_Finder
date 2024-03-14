@@ -24,7 +24,7 @@ export async function signup(userdata,setMode)
       email:userdata.email,
       password:userdata.password
    }
-   const data=await axios.post('http://localhost:5000/v1/mail',user)
+   const data=await axios.post('http://localhost:5000/v1/sign_up',user)
    const result=await data.data;
    if(result.status)
    {
