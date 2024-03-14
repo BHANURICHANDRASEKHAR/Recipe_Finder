@@ -29,9 +29,9 @@ exports.Mail=async(req,res,next)=>{
     <div style="max-width: 600px; margin: 0 auto; background: #f3f8f3;border-radius: 5px;font-family: 'Times New Roman', Times, serif;">
      
         <div style="background-color: red; color:red; padding: 10px; border-radius: 10px 10px 0px 0px;">
-            <img src="./imgs/logo.png" />
+            <img src="https://firebasestorage.googleapis.com/v0/b/react-647c1.appspot.com/o/User_Profiles%2Flogo.png?alt=media&token=e6b4bfd0-cc42-42d9-931c-a35ee0639cbf">
         </div>
-        <img src="./imgs/unnamed.jpg">
+        <img src="https://firebasestorage.googleapis.com/v0/b/react-647c1.appspot.com/o/User_Profiles%2F25224_294121_10150_image.jpg?alt=media&token=64c363c2-3a20-418f-b34e-e3f4b5b3cb0f">
         <div style="text-align: center">
             <p >Hi <b>{name}</b></p>
             <p >Welcome To RecipesShare<br/></p>
@@ -43,7 +43,7 @@ exports.Mail=async(req,res,next)=>{
             <p style="margin-top: 10px;">If you did not make this request, you can safely ignore this message</p>
         </div>
         <div style="height:80px; background-color: black;padding: 10px; display: flex;justify-content: center; border-radius: 0px 0px 10px 10px;" >
-            <img src="./imgs/logo3.png" style="width: 250px; height: inherit; align-items: center;"/>
+            <img src="https://firebasestorage.googleapis.com/v0/b/react-647c1.appspot.com/o/User_Profiles%2Flogo2.png?alt=media&token=911d6a35-5109-4f09-b44e-4c54aa416204" style="width: 250px; height: inherit; align-items: center;"/>
         </div>
     </div>
     
