@@ -15,11 +15,6 @@ const users= new mongoose.Schema({
         type: String,
         required: [true, "Please provide a password"],
     },
-    user_data:{
-
-        liked:[{type:String}],
-    },
-    contributes:[{type:Array}]
-
+  
 })
 module.exports=mongoose.model("users",users);

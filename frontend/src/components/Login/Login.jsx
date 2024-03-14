@@ -3,7 +3,7 @@ import React, { useState,useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import InputFeild from './InputFeild'; 
-import { getOTP } from './call';
+import { getOTP,signup } from './call';
 import { sign_upvalidation } from './uservalidations';
 import { errorfunction } from '../../toaster';
 const initialdata={
@@ -13,6 +13,7 @@ const initialdata={
     confirmPassword: '',
     otp:''
   }
+  
 function Login() {
   const [userdata, setUserData] = useState(initialdata);
   const [mode, setMode] = useState('signin'); 
@@ -42,8 +43,9 @@ function otpverication()
     console.log('otp is',otp)
   if(otp==userdata.otp)
   {
+    signup(userdata,setMode);
     setUserData(initialdata)
-    setMode('signin')
+
   }
   else
   {
@@ -67,16 +69,16 @@ function otpverication()
           {mode === 'signup' ? (
             <React.Fragment>
            <SignupInputFeilds userdata={userdata} onchange={onChange} submit={submit} flag={flag} otp={otp} setFlag={setFlag} setOtp={setOtp} otpverication={otpverication}/>
-           <div className='col mt-3'>Already  have an Account ? <span onClick={()=>{setMode('signin')}}>Sign in</span></div>
+           <div className='col pt-2 text-center' style={{borderTop:'1px solid black',fontSize:'24px'}}>Already  have an Account ? <span onClick={()=>{setMode('signin')}}>Sign in</span></div>
            
            </React.Fragment>
           ) : (
             // sign-in form components
-          <div className='row'>
-          <InputFeild value={userdata.email} label='Email' type='email' name='email' onchangefunction={onchange} /> 
-          <InputFeild value={userdata.password} label='Enter Password' type='password' name='password' onchangefunction={onchange} />
+          <div className='row p-4'>
+          <InputFeild value={userdata.email} label='Email' type='email' name='email' onchangefunction={onChange} /> 
+          <InputFeild value={userdata.password} label='Enter Password' type='password' name='password' onchangefunction={onChange} />
           <Button variant="danger" className='w-100' onClick={submit}>Sign in</Button>  
-          <div className='col mt-3'>Dont have any Account ? <span onClick={()=>{setMode('signup')}}>Signup</span></div>
+          <div className='col pt-2 mt-3 text-center' style={{borderTop:'1px solid black',fontSize:'24px'}}>Dont have any Account ? <span style={{cursor:'pointer'}} onClick={()=>{setMode('signup')}}>Signup</span></div>
           </div>
           )}
         </Modal.Body>
@@ -94,7 +96,7 @@ const SignupInputFeilds=({userdata,submit,onchange,flag,otp,setFlag,setOtp,otpve
                 flag ? 
                 <OTP userdata={userdata} onchange={onchange}  setFlag={setFlag} setOtp={setOtp} otpverication={otpverication}/> :
                 (
-                    <div className='row'>
+                    <div className='row m-4'>
                         <InputFeild value={userdata.name} label='Name' type='text' name='name' onchangefunction={onchange} />
                         <InputFeild value={userdata.email} label='Email' type='email' name='email' onchangefunction={onchange} /> 
                         <InputFeild value={userdata.password} label='Enter Password' type='password' name='password' onchangefunction={onchange} />
@@ -161,7 +163,7 @@ const Timer = ({resentotp}) => {
     return (
         <div className='col'>
             <h1 className='text-center'>00:{time < 10 ? `0${time}` : time}</h1>
-            <p>Didn't receive OTP? <button onClick={resetTimer} className='resentbtn' disabled={setIsActive && time>0}>Resend Now</button></p>
+            <p className='text-center mt-1'>Didn't receive OTP? <button onClick={resetTimer} className='resentbtn' style={{color:setIsActive && time>0?'gray' : 'red'}} disabled={setIsActive && time>0}>Resend Now</button></p>
         </div>
     );
 };
