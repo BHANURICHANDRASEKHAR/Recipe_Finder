@@ -1,6 +1,7 @@
 import React from 'react'
 import Timer from './Timer';
 import { getOTP } from './call';
+import InputFeild from './InputFeild';
 export default function Otp({userdata,onchange,otpverication,setFlag,setOtp}) {
     function resentotp()
     {
