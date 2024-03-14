@@ -2,7 +2,7 @@ import axios from "axios";
 import { errorfunction,promisefunction } from "../../toaster";
  export async function getOTP(userdata,setisloading,setotp,setflag)
 {
-
+console.log('send otp method')
    const result=await axios.post('http://localhost:5000/v1/mail',userdata)
    setisloading(true)
    const data=await result.data;
@@ -19,6 +19,7 @@ import { errorfunction,promisefunction } from "../../toaster";
 }
 export async function resendotp(userdata, setOtp)
 {
+   
    const result=await axios.post('http://localhost:5000/v1/mail',userdata)
    
    const data=await result.data;
@@ -45,5 +46,24 @@ export async function signup(userdata,setMode)
    if(result.status)
    {
       setMode('signin')
+   }
+   else{
+      errorfunction(data.msg)
+   }
+}
+export async function signin(userdata,setShow)
+{
+   const user={
+       email:userdata.email,
+       password:userdata.password
+    }
+   const result=await axios.post('http://localhost:5000/v1/sign_in',user)
+   const data=await result.data;
+   if(data.status)
+   {
+    setShow(false)
+   }
+   else{
+      errorfunction(data.msg)
    }
 }

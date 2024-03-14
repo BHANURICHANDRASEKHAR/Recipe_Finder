@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import InputFeild from './InputFeild'; 
 import { getOTP,signup } from './call';
-import { sign_upvalidation } from './uservalidations';
+import { sign_upvalidation} from './uservalidations';
 import SignupInputFeilds from './Signup';
 import { errorfunction } from '../../toaster';
 const initialdata={
@@ -37,7 +37,12 @@ function Login() {
         getOTP(userdata,setisloading, setOtp, setFlag);
       }
     } else {
-      // Handle sign-in submission
+      var isloginvalid= sign_upvalidation(userdata);
+      if(isloginvalid)
+      {
+        signin(userdata,setShow)
+        
+      }
     }
   }
 function otpverication()
@@ -47,16 +52,14 @@ function otpverication()
   {
     signup(userdata,setMode);
     setUserData(initialdata)
-
+    setFlag(false)
   }
   else
   {
     errorfunction('Otp is Invalid try again')
   }
 }
-  function toggleMode() {
-    setMode(mode === 'signup' ? 'signin' : 'signup');
-  }
+
 
   return (
     <React.Fragment>
@@ -83,7 +86,7 @@ function otpverication()
           disabled={isLoading}
           onClick={!isLoading ? submit : null}
         >
-          {isLoading ? 'Loading…' : 'Create a Account'}
+          {isLoading ? 'Loading…...' : 'Create a Account'}
         </Button>  
           <div className='col pt-2 mt-3 text-center' style={{borderTop:'1px solid black',fontSize:'24px'}}>Dont have any Account ? <span style={{cursor:'pointer'}} onClick={()=>{setMode('signup')}}>Signup</span></div>
           </div>

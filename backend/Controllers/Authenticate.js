@@ -51,8 +51,6 @@ exports.Sign_in=async(req,res)=>{
            
     
         }else{  
-
-
              res.status(200).send({status:false,msg:"User not exited"});
 
         }  
