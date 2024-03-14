@@ -3,7 +3,6 @@ import {Cookies} from 'cookies-js'
 import { errorfunction,promisefunction } from "../../toaster";
  export async function getOTP(userdata,setisloading,setotp,setflag)
 {
-console.log('send otp method')
    const result=await axios.post('http://localhost:5000/v1/mail',userdata)
    setisloading(true)
    const data=await result.data;
