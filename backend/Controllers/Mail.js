@@ -24,25 +24,32 @@ exports.Mail=async(req,res,next)=>{
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Welcome to RecipesShare!</title>
     </head>
-    <body style="font-family: Arial, sans-serif; line-height: 1.6; background-color: #d4fde8; padding: 20px;">
+    <body style="font-family: Arial, sans-serif; line-height: 1.6; background-color: #dde5ec; padding: 20px;">
     
-    <div style="max-width: 600px; margin: 0 auto; background: #f3f8f3; padding: 20px; border-radius: 5px;">
-        <h2 style="color: #333;">Dear ${name},</h2>
-        <h3 style="color: #333;">Welcome to RecipesShare! We're delighted to have you join our community of food enthusiasts and recipe aficionados.</h3>
-        <h3 style="color: #333;">Here's your One-Time Password (OTP) to complete your registration and unlock all the features on our platform: <span style="font-size: 24px; color: #007bff;">${req.app.locals.OTP}</span></h3>
-        <p style="color: #333;">Take a moment to explore our website, where you'll find a diverse array of recipes spanning various cuisines, dietary preferences, and cooking techniques. From quick and easy weeknight dinners to sumptuous desserts and everything in between, there's something to tantalize every taste bud.</p>
-        <p style="color: #333;">We encourage you to dive into our vibrant community by sharing your favorite recipes, engaging with other members, and leaving feedback on recipes you've tried.</p>
-        <p style="color: #333;">Thank you for choosing RecipesShare as your culinary companion. We can't wait to see the delicious creations you'll share!</p>
-        <p style="color: #333;">Happy cooking!</p>
-        <p style="color: #333;"><strong>Best regards,</strong><br>
-        <strong>Undela Murali</strong><br>
-        <strong>Junior BackEnd Developer/👨‍🎓</strong><br>
-        <strong>RecipesShare Team</strong></p>
+    <div style="max-width: 600px; margin: 0 auto; background: #f3f8f3;border-radius: 5px;font-family: 'Times New Roman', Times, serif;">
+     
+        <div style="background-color: red; color:red; padding: 10px; border-radius: 10px 10px 0px 0px;">
+            <img src="./imgs/logo.png" />
+        </div>
+        <img src="./imgs/unnamed.jpg">
+        <div style="text-align: center">
+            <p >Hi <b>{name}</b></p>
+            <p >Welcome To RecipesShare<br/></p>
+            <p >You can also sign up manually by entering the following OTP</p>
+            <div style="display: flex; justify-content: center; align-items: center; margin-top: 10px;"><div style="height: 30px; width: 300px; border: 4px dotted red; margin-left: 10px;text-align: center; font-size: 22px;padding: 4px; letter-spacing: 5px;">${req.app.locals.OTP}</div></div>
+            <p ><b>Note:</b> The OTP will expire in 10 minutes and can only be used once.</p>
+            <p >Thank you</p>
+            <p >Team RecipesShare</p>
+            <p style="margin-top: 10px;">If you did not make this request, you can safely ignore this message</p>
+        </div>
+        <div style="height:80px; background-color: black;padding: 10px; display: flex;justify-content: center; border-radius: 0px 0px 10px 10px;" >
+            <img src="./imgs/logo3.png" style="width: 250px; height: inherit; align-items: center;"/>
+        </div>
     </div>
     
+      </div>
     </body>
-    </html>
-    `
+    </html>` 
 
     const message={
         from:'muraliundela29@gmail.com', 

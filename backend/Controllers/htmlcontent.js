@@ -14,10 +14,10 @@ const info=`<!DOCTYPE html>
     </div>
     <img src="./imgs/unnamed.jpg">
     <div style="text-align: center">
-        <p >Hi name</p>
+        <p >Hi <b>{name}</b></p>
         <p >Welcome To RecipesShare<br/></p>
         <p >You can also sign up manually by entering the following OTP</p>
-        <div style="display: flex; justify-content: center; align-items: center; margin-top: 10px;"><div style="height: 30px; width: 300px; border: 4px dotted red; margin-left: 10px;text-align: center; font-size: 22px;padding: 4px; letter-spacing: 5px;">45678</div></div>
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 10px;"><div style="height: 30px; width: 300px; border: 4px dotted red; margin-left: 10px;text-align: center; font-size: 22px;padding: 4px; letter-spacing: 5px;">${req.app.locals.OTP}</div></div>
         <p ><b>Note:</b> The OTP will expire in 10 minutes and can only be used once.</p>
         <p >Thank you</p>
         <p >Team RecipesShare</p>
