@@ -34,8 +34,13 @@ body {
 .loader img{
   width:200px;
   height: 200px;
- 
 
- 
   user-select: none;
+}
+.resentbtn{
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: red;
+  cursor: pointer;
 }

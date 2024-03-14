@@ -57,7 +57,7 @@ exports.Mail=async(req,res,next)=>{
 })
 .catch((err)=>{
     console.log(err.message)
-    res.status(200).send({status:false,Error:err.message});
+    res.status(200).send({status:false,msg:'Otp Unsend'});
 })
 
 
