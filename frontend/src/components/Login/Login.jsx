@@ -1,7 +1,8 @@
 
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { UserContext } from '../../Context/UserContext';
 import InputFeild from './InputFeild'; 
 import { getOTP,signup,signin } from './call';
 import { sign_upvalidation,signin_upvalidation} from './uservalidations';
@@ -17,6 +18,7 @@ const initialdata={
   
 function Login() {
   const [userdata, setUserData] = useState(initialdata);
+  const { user, setUser } = useContext(UserContext); 
   const [isLoading,setisloading]=useState(false)
   const [mode, setMode] = useState('signin'); 
   const [flag, setFlag] = useState(false);
@@ -41,7 +43,7 @@ function Login() {
       var isloginvalid= signin_upvalidation(userdata);
       if(isloginvalid)
       {
-        signin(userdata,setShow,setisloading)
+        signin(userdata,setShow,setisloading,setUser);
         
       }
     }
@@ -60,7 +62,7 @@ async function otpverication()
     errorfunction('Otp is Invalid try again')
   }
 }
-console.log(isLoading)
+
 
   return (
     <React.Fragment>

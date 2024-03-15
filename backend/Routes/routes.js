@@ -5,7 +5,7 @@ const {Add_contributes}=require('../Controllers/contributes.js');
 const {Update_user}=require('../Controllers/User_Update.js');
 const {Mail}=require('../Controllers/Mail.js');
 const {getOTP}=require('../Controllers/getotp.js');
-const {Add_comments}=require('../Controllers/comments.js');
+const {Add_comments,getcomments}=require('../Controllers/comments.js');
 const data=require('../Controllers/send_data.js');
 const Recipies=require('../Models/recipes.js');
 const {verify}=require('../Mildwares/verify.js');
@@ -40,8 +40,9 @@ router.post('/Verify',Authenticate.Auth);
 router.post('/contributes',Add_contributes);  
 
 //http://localhost:5000/v1/comment
-router.post('/comment',Add_comments);
-
+router.post('/comment',verify,Add_comments);
+//http://localhost:5000/v1/getcomment
+router.get('/getcomments/:id',getcomments);
 //put routes
 
 //http://localhost:5000/v1/update

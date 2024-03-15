@@ -13,7 +13,7 @@ export default function Images({data,languageData}) {
                 </div>
               </div>
               <div className='col-sm-6 mt-3 '>
-              <h4 className='lead item-name d-block w-90'><FaDirections/>  Directions to Prepare </h4>
+              <h4 className='lead item-name d-block w-90'><FaDirections/>Directions to Prepare </h4>
 
                {languageData.data1.map((items, innerIndex) => (
                 <p key={innerIndex} className='mt-4 bg-transparent'><MdOutlineAddCircle className='text-success icons'/>{items}</p>

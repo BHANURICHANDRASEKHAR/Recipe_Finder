@@ -42,9 +42,12 @@ exports.Sign_in=async(req,res)=>{
  
                 const payload={
                     user:{
-                        id:user.id
+                        username:user.username,
+                        UserId:user.id,
+                       
                     }}
                 const token= await jwt.sign(payload,"chandu");
+                console.log(token)
                 res.status(201).send({status:true,token:token,msg:"Login sucessfull"});
                 }   
            

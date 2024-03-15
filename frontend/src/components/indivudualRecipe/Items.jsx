@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import { data, chagelaunge } from './lanugaes';
 import { Cascader } from 'antd';
 import { MdOutlineAddCircle } from "react-icons/md";
@@ -9,6 +9,11 @@ import Images from './Images';
 import Loader from '../../Loader';
 export default function Items({ itemdata,type }) {
   const [languageData, setLanguageData] = useState({data1:itemdata[0].making_process,data2: itemdata[0].ingredients});
+  console.log(languageData)
+  useEffect(() =>{
+    console.log('language')
+ setLanguageData({data1:itemdata[0].making_process,data2: itemdata[0].ingredients})
+  },[itemdata[0]._id])
   return (
    <div className='container-fluid'>
    <div>

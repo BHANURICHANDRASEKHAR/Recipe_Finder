@@ -1,6 +1,11 @@
-import {Cookies} from 'cookies-js'
-export function getcookie()
+import Cookie from 'js-cookie'
+export default function getcookie()
 {
-    const token=Cookies.get('token')
-    console.log(token)
+    const token=Cookie.get('usertoken')
+  
+     return token;
+}
+export const clearcookie=()=>
+{
+  Cookie.remove('usertoken');
 }

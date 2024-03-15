@@ -4,25 +4,27 @@ import Avatar from 'antd/es/avatar/avatar'
 import {store_comments_function} from './data'
 import UserReview from './UserReviews'
 export default function Review({itemsdata}) {
+  const [reviewcount,setreviewscount]=useState([])
   return (
     <div  className='container'>
     <div className='row'>
     <div className='col-sm review-card-parent'>
      <div className='review-card'>
      <div className='review-title '>
-      <h5>Review (0)</h5>
+      <h5>Review {reviewcount}</h5>
      </div>
-      <SetUserReview itemsdata={itemsdata}/>
+      <SetUserReview itemsdata={itemsdata} setreviewscount={setreviewscount}/>
     </div>
-    <UserReview/>
+    
     </div>
     
     </div></div>  )
 }
-const SetUserReview=({itemsdata})=>{
+const SetUserReview=({itemsdata,setreviewscount})=>{
  
     const [content,setcontent]=useState('')
     const [show,setshow]=useState(false)
+    const [count,setcount]=useState(0)
     const [rating,setrating]=useState(0)
     function change()
     {
@@ -30,10 +32,11 @@ const SetUserReview=({itemsdata})=>{
     }
     function submit()
     {
-      store_comments_function(itemsdata[0]._id,content,rating)
+      store_comments_function(itemsdata[0]._id,content,rating,setcount)
+      setcontent('')
+      setshow(false)
     }
     return(
-  
     <div className='col'>
     <div  className='mt-5 user-review'>
     <div className='user-icon p-2'><Avatar size={30} className='bg-gray  text-dark text-black m-2'>U</Avatar></div>
@@ -53,6 +56,7 @@ const SetUserReview=({itemsdata})=>{
     </div>
     </div>
     </div>
+    <UserReview count={count} itemid={itemsdata[0]._id} setreviewscount={setreviewscount}/>
     </div>
     )
 }

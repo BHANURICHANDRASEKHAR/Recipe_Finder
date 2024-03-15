@@ -11,12 +11,12 @@ export default function Ratings({rating,setrating}) {
          <span
            key={star}
           onClick={()=>{setrating(star)}}
-          //  style={{
-          //    cursor: 'pointer',
-          //    fontSize: '26px',
-          //    color:'gray',
-          //    color: star <= rating ? 'gold' : 'gray',
-          //  }}
+           style={{
+             cursor: 'pointer',
+             fontSize: '26px',
+             color:'gray',
+             color: star <= rating ? 'gold' : 'gray',
+           }}
          >
            <AiFillStar/>
          </span>

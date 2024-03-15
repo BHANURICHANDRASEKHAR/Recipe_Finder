@@ -1,34 +1,40 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import Avatar from 'antd/es/avatar/avatar'
 import { AiFillStar } from "react-icons/ai";
 import { BiLike } from "react-icons/bi";
-import { testreviews } from './data';
-export default function UserReview() {
+import {getcomments } from './data';
+export default function UserReview({count,itemid,setreviewscount}) {
+  const [usersreviewsdata,setusersreviewsdata]=useState([])
+useEffect(()=>{
+  getcomments(itemid,setusersreviewsdata,setreviewscount)
+},[count])
+
   return (
     <React.Fragment>
     {
-      testreviews.map((data)=>{
-        return(
-           <div className='row m-2 border-top1 ' style={{overflowWrap:'anywhere'}}>
-           <div className='col'>
-           <div  className='mt-2 user-review border-0 p-0'>
-           <div className='user-icon p-2'><Avatar size={30} className='bg-gray  text-dark text-black m-2'>{data.name.charAt(0)}</Avatar></div>
-           <div className='p-2 '>
-           <div className='mt-1'>           
-          <div className='d-flex justify-content-between'>
-          <UserRatings rating='3' name={data.name}/> <span className='like'><BiLike /></span> 
+     usersreviewsdata.length > 0  &&  usersreviewsdata.map((data,index)=>{
+      return(
+         <div className='row m-2 border-top1 ' key={index} style={{overflowWrap:'anywhere'}}>
+         <div className='col'>
+         <div  className='mt-2 user-review border-0 p-0'>
+         <div className='user-icon p-2'><Avatar size={30} className='bg-gray  text-dark text-black m-2'>{data.username.charAt(0) }</Avatar></div>
+         <div className='p-2 '>
+         <div className='mt-1'>           
+        <div className='d-flex justify-content-between'>
+        <UserRatings rating={data.rating} name={data.username}/> <span className='like'><BiLike /></span> 
+        </div>
+           <div className='mt-3' >
+           <p className='text-justify'>{data.comments}</p>
+           </div>
+         </div>
+         </div>
+         </div>
           </div>
-             <div className='mt-3' >
-             <p className='text-justify'>{data.msg}</p>
-             </div>
-           </div>
-           </div>
-           </div>
-            </div>
-       
-          </div>
-        )
-      })
+     
+        </div>
+  
+      )
+    })
     }
     </React.Fragment>
   )
