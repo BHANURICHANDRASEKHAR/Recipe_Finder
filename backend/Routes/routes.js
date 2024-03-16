@@ -48,6 +48,7 @@ router.post('/inclikes',inclikes)
 //put routes
 //http://localhost:5000/v1/update
 router.put('/update/:id',Update_user);
+// http://localhost:5000/v1/forget_password
 router.put('/forget_password',Authenticate.Forgetpassword);
 
 

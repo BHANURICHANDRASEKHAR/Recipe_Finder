@@ -29,7 +29,7 @@ function Sort({fulldata,setactualdata}) {
  <div className='col-3'></div>
   <div className='col-4'><Searchbar fulldata={fulldata}/></div>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} backdrop='static' keyboard={false}>
         <Modal.Header closeButton>
           <Modal.Title className='text-dark'>Filter</Modal.Title>
         </Modal.Header>

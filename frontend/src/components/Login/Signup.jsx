@@ -12,8 +12,7 @@ export default function SignupInputFeilds({userdata,submit,onchange,flag,otp,set
                     <div className='row m-4'>
                         <InputFeild value={userdata.name} label='Name' type='text' name='name' onchangefunction={onchange} />
                         <InputFeild value={userdata.email} label='Email' type='email' name='email' onchangefunction={onchange} /> 
-                        <InputFeild value={userdata.password} label='Enter Password' type='password' name='password' onchangefunction={onchange} />
-                        <InputFeild value={userdata.confirmPassword} label='ConfirmPassword' type='text' name='confirmPassword' onchangefunction={onchange} /> 
+                         <Forget userdata={userdata} onchange={onchange} />
                         <Button
                  variant="primary"
                  disabled={isLoading}
@@ -25,5 +24,13 @@ export default function SignupInputFeilds({userdata,submit,onchange,flag,otp,set
                 )
             }
         </div>
+    )
+}
+export const  Forget=({userdata,onchange})=>{
+    return(
+        <React.Fragment>
+        <InputFeild value={userdata.password} label='Enter Password' type='password' name='password' onchangefunction={onchange} />
+        <InputFeild value={userdata.confirmPassword} label='ConfirmPassword' type='text' name='confirmPassword' onchangefunction={onchange} /> 
+        </React.Fragment>
     )
 }

@@ -3,6 +3,7 @@ import Cookie from 'js-cookie'
 import { errorfunction} from "../../toaster";
  export async function getOTP(userdata,setisloading,setotp,setflag,setMode)
 {
+
    const result=await axios.post('http://localhost:5000/v1/mail',userdata)
    setisloading(true)
    const data=await result.data;
@@ -76,5 +77,41 @@ export async function signin(userdata,setShow,setisloading,setUser)
    else{
       setisloading(false)
       errorfunction(data.msg)
+   }
+}
+export async function forgetpassword(userdata,setisloading,setotp,setflag)
+{
+
+   const result=await axios.post('http://localhost:5000/v1/mail',userdata)
+   setisloading(true)
+   const data=await result.data;
+   if(data.status)
+   {
+      setisloading(false)
+      setotp(data.otp)
+      console.log(data.otp)
+      setflag(true)
+   }
+   else{
+     errorfunction(data.msg)
+     setisloading(false)
+   }
+}
+
+export async function resetpassword(userdata,setisloading,setShow, setUser)
+{
+   const result=await axios.put('http://localhost:5000/v1/forget_password',userdata)
+   setisloading(true)
+   const data=await result.data;
+   if(data.status)
+   {
+      Cookie.set('usertoken', data.token, { expires: Infinity });
+      setisloading(false)
+      setShow(false)
+      setUser(true)
+   }
+   else{
+     errorfunction(data.msg)
+     setisloading(false)
    }
 }

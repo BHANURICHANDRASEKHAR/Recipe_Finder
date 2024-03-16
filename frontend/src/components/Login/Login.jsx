@@ -8,23 +8,25 @@ import { getOTP,signup,signin } from './call';
 import { sign_upvalidation,signin_upvalidation} from './uservalidations';
 import SignupInputFeilds from './Signup';
 import { errorfunction } from '../../toaster';
-const initialdata={
+import ForgetPassWord from './ForgetPassWord';
+
+function Login() {
+  const { show,setShow, setUser } = useContext(UserContext); 
+  const [isLoading,setisloading]=useState(false)
+  const [mode, setMode] = useState('signin'); 
+  const initialdata={
     email: '',
     name: '',
     password: '',
     confirmPassword: '',
-    otp:''
+    otp:'',
+    type:mode=='signin' ? false : true
   }
-  
-function Login() {
   const [userdata, setUserData] = useState(initialdata);
-  const { show,setShow, setUser } = useContext(UserContext); 
-  const [isLoading,setisloading]=useState(false)
-  const [mode, setMode] = useState('signin'); 
-  const [flag, setFlag] = useState(true);
-  const [otp, setOtp] = useState('1234');
-  
 
+  const [flag, setFlag] = useState(false); 
+  const [otp, setOtp] = useState('1234');
+  const [resetPassword, setResetPassword] = useState(false)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -36,6 +38,7 @@ function Login() {
     if (mode === 'signup') {
       var isValid = sign_upvalidation(userdata);
       if (isValid) {
+       
         getOTP(userdata,setisloading, setOtp, setFlag,setMode);
         setUserData(initialdata)
       }
@@ -81,7 +84,8 @@ async function otpverication()
            </React.Fragment>
           ) : (
             // sign-in form components
-          <div className='row p-4'>
+          resetPassword?
+          <ForgetPassWord userdata={userdata} onChange={onChange}/>:(<div className='row p-4'>
           <InputFeild value={userdata.email} label='Email' type='email' name='email' onchangefunction={onChange} /> 
           <InputFeild value={userdata.password} label='Enter Password' type='password' name='password' onchangefunction={onChange} />
           <Button
@@ -91,9 +95,9 @@ async function otpverication()
         >
         {isLoading ? 'Loading…' : 'Sign In'}
         </Button>  
-       
+          <p className='mt-3 text-center text-primary' onClick={()=>{setResetPassword(true)}}>Forget password</p>
           <div className='col pt-2 mt-3 text-center' style={{borderTop:'1px solid black',fontSize:'24px'}}>Dont have any Account ? <span style={{cursor:'pointer'}} onClick={()=>{setMode('signup')}}>Signup</span></div>
-          </div>
+          </div>)
           )}
         </Modal.Body>
     

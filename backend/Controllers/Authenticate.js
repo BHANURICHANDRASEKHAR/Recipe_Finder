@@ -40,13 +40,7 @@ exports.Sign_in=async(req,res)=>{
             }
             else{
  
-                const payload={
-                    user:{
-                        username:user.username || 'chandu',
-                        UserId:user.id ,
-                       
-                    }}
-                const token= await jwt.sign(payload,"chandu");
+                const token=tokencreattion(user)
               
                 res.status(201).send({status:true,token:token,msg:"Login sucessfull"});
                 }   
@@ -92,19 +86,43 @@ exports.Forgetpassword=async(req,res)=>{
         const{email,password}=req.body;
         console.log(req.body);
         const user= await users.findOne({email});
+        console.log(user);
         if(!user){
             res.status(200).send({msg:"User not exits"});
         }else{
             const body={
                 password:password
             }
-            await users.updateOne({email:user.email},{$set:body});
-            res.status(200).send({msg:"Password successfully Reseted"})
-        }
+          const payload= await users.updateOne({email:user.email},{$set:body});
+          console.log(payload);
+            if(payload.modifiedCount>=1) 
+            {
+              
+              const token= await tokencreattion(user);
+              
+              res.status(200).send({status:true,token:token,msg:"Password reset sucessfull"});
+            }
+            else{
+                res.status(200).send({status:false,msg:"You given Previous Password"});
+            }
 
+            }
     }catch(err){
+        console.log(err.message);
         res.status(500).send({Error:err.message});
 
-    }
+                                                                                         }
+}
+async function tokencreattion(user)
+{
+    console.log(user);
+    const payload={
+        user:{
+            username:user.username ,
+            UserId:user.id ,
+           
+        }}
+    const token= await jwt.sign(payload,"chandu");
 
+    return token;
 }
