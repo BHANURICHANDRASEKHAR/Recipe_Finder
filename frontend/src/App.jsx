@@ -5,15 +5,16 @@ import AOS from 'aos'
 import { useEffect } from 'react'
 import UserContUserContextProviderext  from './Context/UserContext'
 import Footer from './Footer'
-
 export default function App() {
+
   useEffect(() => {
     AOS.init({ 
        duration: 2000
      });
   }, []);
-  console.log("App ca");
-
+  useEffect(()=>{
+    
+  },[])
   return (
     <UserContUserContextProviderext>
     <App1/>

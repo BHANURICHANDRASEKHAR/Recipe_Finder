@@ -1,14 +1,33 @@
 
-import React,{useState} from 'react'
+import React,{useState,useContext, useEffect} from 'react'
 import { IoMenu } from "react-icons/io5";
 import { GiCancel } from "react-icons/gi";
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.png'
+import { UserContext } from '../../Context/UserContext';
 import './navbar.css'
+import gettoken,{clearcookie} from '../Login/gettoken'
+import {Cookies} from 'cookies-js' 
 import Login from '../Login/Login';
 export default function Narbar() {
   const [flag,setflag]=useState(true)
-  console.log('navbar rendered')
+  const { user, setUser } = useContext(UserContext); 
+  function logout()
+  {
+    clearcookie()
+    setUser(false)
+  }
+  useEffect(()=>{
+   const token= gettoken()
+   if(token)
+   {
+    setUser(true)
+   }
+   else{
+    setUser(false)
+   }
+  },[user])
+  setUser(true)
   return (
   <div className='container-fluid homepage '>
   <div className="nav container bg-transparent ">
@@ -30,9 +49,12 @@ export default function Narbar() {
     <NavLink to="/"> Home</NavLink>
     <NavLink to='/recipes'>Recipes</NavLink>
      <NavLink to='/about'>About Us</NavLink>
-     <NavLink ><Login/></NavLink>
-    <button className='btn btn-outline-info m-3'>logout</button>
-   
+     {
+      user?  <button className='btn btn-outline-info m-3' onClick={logout}>logout</button>:
+      <NavLink ><Login/></NavLink>
+     }
+    
+  
   </div>
 </div> 
   </div>

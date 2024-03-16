@@ -5,7 +5,7 @@ const jwt =require ('jsonwebtoken');
 exports.Sign_up=async(req,res)=>{
     try{
         const {username,email,password}=req.body;
-        console.log(req.body);
+     
         const user=await users.findOne({email});
         if(user){
             res.send({status:false,msg:"user alredy existe"});
@@ -42,9 +42,12 @@ exports.Sign_in=async(req,res)=>{
  
                 const payload={
                     user:{
-                        id:user.id
+                        username:user.username || 'chandu',
+                        UserId:user.id ,
+                       
                     }}
                 const token= await jwt.sign(payload,"chandu");
+              
                 res.status(201).send({status:true,token:token,msg:"Login sucessfull"});
                 }   
            

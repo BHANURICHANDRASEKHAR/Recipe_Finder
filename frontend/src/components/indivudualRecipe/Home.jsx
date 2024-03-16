@@ -12,7 +12,10 @@ export default function Home() {
   const [itemdata,setitemdata]=useState([])
    useEffect(()=>{
   fetchdatafromdatabase(setitemdata,params[0])
+
+ 
  },[params[0]])
+
   return (
     <div className='container-fluid  '>
     {      itemdata.length>0&& <Items itemdata={itemdata} type={params[1]}/>

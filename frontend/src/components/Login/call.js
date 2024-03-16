@@ -1,9 +1,8 @@
 import axios from "axios";
-import {Cookies} from 'cookies-js'
-import { errorfunction,promisefunction } from "../../toaster";
+import Cookie from 'js-cookie'
+import { errorfunction} from "../../toaster";
  export async function getOTP(userdata,setisloading,setotp,setflag,setMode)
 {
-console.log('send otp method')
    const result=await axios.post('http://localhost:5000/v1/mail',userdata)
    setisloading(true)
    const data=await result.data;
@@ -55,8 +54,9 @@ export async function signup(userdata,setMode)
       errorfunction(result.msg)
    }
 }
-export async function signin(userdata,setShow)
+export async function signin(userdata,setShow,setisloading,setUser)
 {
+   setisloading(true)
    const user={
        email:userdata.email,
        password:userdata.password
@@ -67,10 +67,14 @@ export async function signin(userdata,setShow)
    console.log(data)
    if(data.status)
    {
-      Cookies.set('usertoken', data.token, { expires: Infinity });
+      Cookie.set('usertoken', data.token, { expires: Infinity });
+      setisloading(false)
       setShow(false)
+     setUser(true)
+
    }
    else{
+      setisloading(false)
       errorfunction(data.msg)
    }
 }

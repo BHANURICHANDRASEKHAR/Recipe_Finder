@@ -1,7 +1,8 @@
 
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { UserContext } from '../../Context/UserContext';
 import InputFeild from './InputFeild'; 
 import { getOTP,signup,signin } from './call';
 import { sign_upvalidation,signin_upvalidation} from './uservalidations';
@@ -17,11 +18,12 @@ const initialdata={
   
 function Login() {
   const [userdata, setUserData] = useState(initialdata);
+  const { show,setShow, setUser } = useContext(UserContext); 
   const [isLoading,setisloading]=useState(false)
   const [mode, setMode] = useState('signin'); 
-  const [flag, setFlag] = useState(false);
+  const [flag, setFlag] = useState(true);
   const [otp, setOtp] = useState('1234');
-  const [show, setShow] = useState(false);
+  
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -41,8 +43,8 @@ function Login() {
       var isloginvalid= signin_upvalidation(userdata);
       if(isloginvalid)
       {
-        signin(userdata,setShow)
-        
+        signin(userdata,setShow,setisloading,setUser);
+        setUserData(initialdata)
       }
     }
   }
@@ -87,8 +89,9 @@ async function otpverication()
           disabled={isLoading}
           onClick={!isLoading ? submit : null}
         >
-          {isLoading ? 'Loading…...' : 'Create a Account'}
+        {isLoading ? 'Loading…' : 'Sign In'}
         </Button>  
+       
           <div className='col pt-2 mt-3 text-center' style={{borderTop:'1px solid black',fontSize:'24px'}}>Dont have any Account ? <span style={{cursor:'pointer'}} onClick={()=>{setMode('signup')}}>Signup</span></div>
           </div>
           )}

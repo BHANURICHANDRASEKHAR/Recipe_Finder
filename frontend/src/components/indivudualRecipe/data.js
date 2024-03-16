@@ -1,37 +1,135 @@
 import axios from "axios"
-import { promisefunction } from "../../toaster"
-export const testreviews=[
-    {
-        msg:'uhedhuweerwiuuih hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhgdhdhghhdhhbhanui chadfyhghhhjhhfgujbhanuri chsnhdcbhbshjdsfhjdhjdhfsjhdfsjhjdfshjfdshjdsfhh',
-        name:'Chandu',
-        rate:'2'
-    },
-    {
-        msg:'uhesdhuweerwiuuih hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhgdhdhghhdhhbhanui chadfyhghhhjhhfgujbhanuri chsnhdcbhbshjdsfhjdhjdhfsjhdfsjhjdfshjfdshjdsfhh',
-        name:'Bhanuri',
-        rate:'2'
-    }
-    ,
-    {
-        msg:'uhedhuweerwiuuih hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhgdhdhghhdhhbhanui chadfyhghhhjhhfgujbhanuri chsnhdcbhbshjdsfhjdhjdhfsjhdfsjhjdfshjfdshjdsfhh',
-        name:'Murali',
-        rate:'2'
-    }
-    ,    {
-        msg:'uhedhuweerwiuuih hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhgdhdhghhdhhbhanui chadfyhghhhjhhfgujbhanuri chsnhdcbhbshjdsfhjdhjdhfsjhdfsjhjdfshjfdshjdsfhh',
-        name:'Undela',
-        rate:'2'
-    }
-]
-export async function store_comments_function(id,comment,rating)
+import getcookie from '../Login/gettoken'
+import { errorfunction, successfunction } from "../../toaster"
+
+export async function store_comments_function(id,reviewdata,setcount,setShow)
 {
-  const data={
-    post_id:id,
-    comment:comment,
-    rating:rating
-  }
- const result=await axios.post('http://localhost:5000/v1/comment',data);
- promisefunction(result);
- const resultdata=await result.data;
- console.log(resultdata)
+   const flag=reviewvalidation(reviewdata)
+   if(flag)
+   {
+    const token= await getcookie();
+    if(token)
+    {
+        const data={
+            post_id:id,
+            comments:reviewdata.content,
+            rating:reviewdata.rating,
+            token:token,
+          }
+          const result=await axios.post('http://localhost:5000/v1/comment',data);
+        
+          const resultdata=await result.data;
+          console.log(resultdata)
+           setcount((prev)=>prev+1)
+    }
+    else{
+       errorfunction(`you need's to login`)
+       setShow(true)
+    }
+   }
+   else{
+    console.log('error occured')
+   }
+}
+export async function getcomments(id, setreviewsdata,setreviewscount)
+{
+    const result=await axios.get(`http://localhost:5000/v1/getcomments/${id}`)
+    const data=await result.data;
+    setreviewsdata(data.data)
+ 
+    setreviewscount(data.size)
+
+}
+export function reviewvalidation(review)
+{
+    if(review.content.trim()=='' || review.rating<0)
+    {
+        errorfunction('Please fill all the fields')
+        return false
+    }
+    return true;
+
+}
+export async function likescount(setreviewsdata,UserId,post_id,likes)
+{
+    const likesdata={
+        UserId:UserId,
+        post_id:post_id,
+        likes:likes
+    }
+ const result=  await axios.post('http://localhost:5000/v1/inclikes',likesdata)
+ const data=await result.data;
+ setreviewsdata(data.data)
+   
+}
+export async function saverecipe(post,setcount,saveddata)
+{
+    
+    const bit=saveddata.find((items)=>items.post_id==post._id)
+    if(!bit)
+    {
+      
+        const token= await getcookie();
+        if(token)
+        {
+            const data={
+                post_id:post._id,
+                img:post.img,
+                Itemname:post.name,
+                type:post.type,
+                token
+              }
+              const result=await axios.post('http://localhost:5000/v1/saverecipe',data);
+              const resultdata=await result.data;
+              if(resultdata.status)
+              {
+                setcount((prev)=>prev+1)
+                 successfunction(resultdata.msg)
+              }
+               
+        }
+        else{
+           errorfunction(`you need's to login`)
+           
+        }
+    }
+    else{
+        successfunction('Already Saved')
+    }
+  
+  
+}
+export async function getsaverecipe(post,setflag,setsaveddata)
+{
+    
+    const token= await getcookie();
+    if(token)
+    {
+        const data={
+            post_id:post._id,
+            token:token,
+          }
+          
+          const result=await axios.post('http://localhost:5000/v1/getsaverecipe',data);
+          const resultdata=await result.data;
+       
+          if(resultdata.status)
+          {
+           const resultrecipedata=await resultdata.data
+           const bit=resultrecipedata.find((items)=>items.post_id==data.post_id)
+           setsaveddata(resultrecipedata)
+           if(bit)
+           {
+            setflag(true)
+           }
+           else{
+            setflag(false)
+           }
+          }
+           
+    }
+    else{
+       errorfunction(`you need's to login`)
+      
+    }
 }

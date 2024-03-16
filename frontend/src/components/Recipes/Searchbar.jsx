@@ -41,19 +41,20 @@ const ItemsTable=({searchdata})=>{
     return(
         <div className='row'>
         <table width='100%' >
-         {
+        <tbody>
+        {
             searchdata.map((items,index)=>{
                 return(
                    
-                    <tr className='tr'>
-                    <Link to={`/recipe/${encodeURIComponent(items._id)}-${encodeURIComponent(items.type)}`}  key={index}>
-
+                    <tr className='tr' key={index}>
+                    <Link to={`/recipe/${encodeURIComponent(items._id)}-${encodeURIComponent(items.type)}`} className='text-dark' key={index}>
                      <td ><img src={items.img}/></td>
                     <td>{items.name}</td></Link>
                     </tr>
                 )
             })
          }
+        </tbody>
         </table>
         </div>
     )

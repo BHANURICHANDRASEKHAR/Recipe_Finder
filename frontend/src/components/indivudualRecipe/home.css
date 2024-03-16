@@ -38,10 +38,11 @@
     filter: brightness(120%);
 }
 .recipe-img{
-    height:inherit;
- 
+    height:100%;
+    max-height: inherit;
     width: 100%;
     object-fit: contain;
+    filter:brightness(100%);
  border-radius: 10px;}
  .card-data1{
     display: flex;
@@ -155,4 +156,16 @@
     .review-card-parent{
        padding: 5%;
       }
+      .item-name::after{
+        position: absolute;
+        content: '';
+      
+        background-color: rgb(244, 243, 243);
+        height: 100%;
+        transform: skewX(0.56turn);
+        width:60px;
+        top:0;
+        right: 0;
+        
+    }
 }

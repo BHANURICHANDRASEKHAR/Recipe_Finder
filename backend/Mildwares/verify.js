@@ -1,18 +1,20 @@
 const users=require('../Models/users.js');
+const jwt=require('jsonwebtoken')
 exports.verify=async(req,res,next)=>{
     try{
-        const{email}=req.body;
-        console.log(email);
-        const user=await users.findOne({email});
-        if(user){
-            
-            next();
+        const {token}=req.body;
+       
+        if(!token){
+            res.status(200).send({status:false,msg:"Invalid token"});
         }else{
-            res.status(200).send({status:false,msg:'email not verified'});
+        const d=jwt.verify(token,"chandu");
+       
+        req.user=d.user;
+        next();
         }
 
     }catch(err){
-        resizeBy.status(200).send({status:false,msg:err.message});
+        res.status(200).send({status:false,msg:err.message});
     }
 
 }
