@@ -5,7 +5,7 @@ const {Add_contributes}=require('../Controllers/contributes.js');
 const {Update_user}=require('../Controllers/User_Update.js');
 const {Mail}=require('../Controllers/Mail.js');
 const {getOTP}=require('../Controllers/getotp.js');
-const {Add_comments}=require('../Controllers/comments.js');
+const {Add_comments,getcomments,inclikes}=require('../Controllers/comments.js');
 const data=require('../Controllers/send_data.js');
 const Recipies=require('../Models/recipes.js');
 const {verify}=require('../Mildwares/verify.js');
@@ -31,7 +31,7 @@ router.post('/sign_up',Authenticate.Sign_up);
 router.post('/sign_in',Authenticate.Sign_in); 
 
 //http://localhost:5000/v1/mail
-router.post('/mail',otp.getOTP,Mail);
+router.post('/mail',getOTP,Mail);
 
 //http://localhost:5000/v1/Verify
 router.post('/Verify',Authenticate.Auth);
@@ -48,6 +48,14 @@ router.post('/inclikes',inclikes)
 //put routes
 //http://localhost:5000/v1/update
 router.put('/update/:id',Update_user);
+router.put('/forget_password',Authenticate.Forgetpassword);
 
+
+
+// http://localhost:5000/v1/saverecipe
+router.post('/saverecipe',verify,postsavedrecipes)
+
+// http://localhost:5000/v1/getsaverecipe
+router.post('/getsaverecipe',verify,getsavedrecipes)
 
 module.exports=router
