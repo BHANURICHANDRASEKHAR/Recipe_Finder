@@ -48,8 +48,14 @@ router.post('/inclikes',inclikes)
 //put routes
 //http://localhost:5000/v1/update
 router.put('/update/:id',Update_user);
+router.put('/forget_password',Authenticate.Forgetpassword);
+
+
+
 // http://localhost:5000/v1/saverecipe
 router.post('/saverecipe',verify,postsavedrecipes)
+
 // http://localhost:5000/v1/getsaverecipe
 router.post('/getsaverecipe',verify,getsavedrecipes)
+
 module.exports=router

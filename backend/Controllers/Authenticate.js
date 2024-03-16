@@ -84,3 +84,27 @@ exports.Auth=async(req,res)=>{
     }
 
 }
+
+exports.Forgetpassword=async(req,res)=>{
+
+    try{
+        
+        const{email,password}=req.body;
+        console.log(req.body);
+        const user= await users.findOne({email});
+        if(!user){
+            res.status(200).send({msg:"User not exits"});
+        }else{
+            const body={
+                password:password
+            }
+            await users.updateOne({email:user.email},{$set:body});
+            res.status(200).send({msg:"Password successfully Reseted"})
+        }
+
+    }catch(err){
+        res.status(500).send({Error:err.message});
+
+    }
+
+}
