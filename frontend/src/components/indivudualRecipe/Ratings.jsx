@@ -2,20 +2,19 @@ import { useState } from "react"
 import React from 'react'
 import { AiFillStar } from "react-icons/ai";
 
-export default function Ratings({rating,setrating}) {
-
+export default function Ratings({reviewdata,setreviewdata}) {
+ 
   return (
     <div className="mb-4">
  
        {[1, 2, 3, 4, 5].map((star) => (
          <span
            key={star}
-          onClick={()=>{setrating(star)}}
+          onClick={()=>{setreviewdata({...reviewdata,['rating']:star})}}
            style={{
              cursor: 'pointer',
              fontSize: '26px',
-             color:'gray',
-             color: star <= rating ? 'gold' : 'gray',
+             color: star <= reviewdata.rating ? 'gold' : 'gray',
            }}
          >
            <AiFillStar/>

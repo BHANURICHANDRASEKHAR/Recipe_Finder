@@ -5,11 +5,11 @@ const {Add_contributes}=require('../Controllers/contributes.js');
 const {Update_user}=require('../Controllers/User_Update.js');
 const {Mail}=require('../Controllers/Mail.js');
 const {getOTP}=require('../Controllers/getotp.js');
-const {Add_comments,getcomments}=require('../Controllers/comments.js');
+const {Add_comments,getcomments,inclikes}=require('../Controllers/comments.js');
 const data=require('../Controllers/send_data.js');
 const Recipies=require('../Models/recipes.js');
 const {verify}=require('../Mildwares/verify.js');
-    
+ const {postsavedrecipes,getsavedrecipes} =require('../Controllers/saverecipes.js')   
 
 //get routes
 //http://localhost:5000/v1/get/:type
@@ -43,10 +43,13 @@ router.post('/contributes',Add_contributes);
 router.post('/comment',verify,Add_comments);
 //http://localhost:5000/v1/getcomment
 router.get('/getcomments/:id',getcomments);
+// http://localhost:5000/v1/inclikes
+router.post('/inclikes',inclikes)
 //put routes
-
 //http://localhost:5000/v1/update
 router.put('/update/:id',Update_user);
-
-
+// http://localhost:5000/v1/saverecipe
+router.post('/saverecipe',verify,postsavedrecipes)
+// http://localhost:5000/v1/getsaverecipe
+router.post('/getsaverecipe',verify,getsavedrecipes)
 module.exports=router

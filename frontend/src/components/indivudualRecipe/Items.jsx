@@ -9,9 +9,9 @@ import Images from './Images';
 import Loader from '../../Loader';
 export default function Items({ itemdata,type }) {
   const [languageData, setLanguageData] = useState({data1:itemdata[0].making_process,data2: itemdata[0].ingredients});
-  console.log(languageData)
+
   useEffect(() =>{
-    console.log('language')
+   
  setLanguageData({data1:itemdata[0].making_process,data2: itemdata[0].ingredients})
   },[itemdata[0]._id])
   return (

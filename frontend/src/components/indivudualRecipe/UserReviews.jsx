@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react'
 import Avatar from 'antd/es/avatar/avatar'
 import { AiFillStar } from "react-icons/ai";
 import { BiLike } from "react-icons/bi";
-import {getcomments } from './data';
+import {getcomments,likescount } from './data';
 export default function UserReview({count,itemid,setreviewscount}) {
   const [usersreviewsdata,setusersreviewsdata]=useState([])
 useEffect(()=>{
@@ -21,7 +21,8 @@ useEffect(()=>{
          <div className='p-2 '>
          <div className='mt-1'>           
         <div className='d-flex justify-content-between'>
-        <UserRatings rating={data.rating} name={data.username}/> <span className='like'><BiLike /></span> 
+        <UserRatings rating={data.rating} name={data.username}/> <div><span className='like' onClick={()=>{likescount(setusersreviewsdata,data.UserId,data.post_id,data.likes)}}><BiLike /></span><br/><span className='m-2'>{data.likes}</span></div>
+      
         </div>
            <div className='mt-3' >
            <p className='text-justify'>{data.comments}</p>
@@ -49,7 +50,7 @@ const UserRatings=({rating,name})=>{
            style={{
              cursor: 'pointer',
              fontSize: '16px',
-             color:'gray',
+            
              color: star <= rating ? 'gold' : 'gray',
            }}
          >

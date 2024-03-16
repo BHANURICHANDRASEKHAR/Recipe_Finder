@@ -15,7 +15,7 @@ export default function Otp({userdata,onchange,otpverication,setOtp}) {
            <h3>Enter Otp</h3>
            <p>Verification code has been sent to your email, {userdata.email}, please enter the same here to complete the signup. Valid for 10 minutes.</p>
            <InputFeild value={userdata.otp}  label='Confirm Otp' type='text' name='otp' onchangefunction={onchange}/> 
-           <Button variant="danger" className='w-100 text-white' onClick={otpverication} >Proccedd</Button>
+           <Button variant="danger" className='w-100 text-white' onClick={otpverication} >Procced</Button>
        </div>
        
    </div>

@@ -18,12 +18,12 @@ const initialdata={
   
 function Login() {
   const [userdata, setUserData] = useState(initialdata);
-  const { user, setUser } = useContext(UserContext); 
+  const { show,setShow, setUser } = useContext(UserContext); 
   const [isLoading,setisloading]=useState(false)
   const [mode, setMode] = useState('signin'); 
-  const [flag, setFlag] = useState(false);
+  const [flag, setFlag] = useState(true);
   const [otp, setOtp] = useState('1234');
-  const [show, setShow] = useState(false);
+  
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -44,7 +44,7 @@ function Login() {
       if(isloginvalid)
       {
         signin(userdata,setShow,setisloading,setUser);
-        
+        setUserData(initialdata)
       }
     }
   }

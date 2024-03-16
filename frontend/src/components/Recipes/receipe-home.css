@@ -101,6 +101,7 @@
     width: 4rem;
     border-radius: 5px;
     object-fit:cover;
+    mix-blend-mode: multiply;
     filter: brightness(100%);
     filter:drop-shadow(1px 1px 1px #000000);
 }

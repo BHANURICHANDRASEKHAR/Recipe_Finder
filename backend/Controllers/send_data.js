@@ -3,7 +3,7 @@ const Recipies=require('../Models/recipes.js');
 exports.send_data_type=async(req, res)=>{
     try{
         const type=req.params.type;
-         console.log(type)
+        
         data=await Recipies.find({type:type});
       
         res.status(200).send({size:data.length,data:data,status:true,msg:"Done"});

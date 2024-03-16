@@ -155,4 +155,16 @@
     .review-card-parent{
        padding: 5%;
       }
+      .item-name::after{
+        position: absolute;
+        content: '';
+      
+        background-color: rgb(244, 243, 243);
+        height: 100%;
+        transform: skewX(0.56turn);
+        width:60px;
+        top:0;
+        right: 0;
+        
+    }
 }

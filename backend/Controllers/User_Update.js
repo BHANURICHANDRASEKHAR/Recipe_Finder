@@ -2,7 +2,7 @@ exports.Update_user=async(req,res)=>{
 
     try{
 
-        console.log(req.body);
+      
         const userId = req.params.id; 
         const new_data = req.body.new_data; 
        
