@@ -7,7 +7,7 @@ import logo from '../../assets/logo.png'
 import { UserContext } from '../../Context/UserContext';
 import './navbar.css'
 import gettoken,{clearcookie} from '../Login/gettoken'
-import {Cookies} from 'cookies-js' 
+
 import Login from '../Login/Login';
 export default function Narbar() {
   const [flag,setflag]=useState(true)
@@ -50,7 +50,7 @@ export default function Narbar() {
     <NavLink to='/recipes'>Recipes</NavLink>
      <NavLink to='/about'>About Us</NavLink>
      {
-      user?  <button className='btn btn-outline-info m-3' onClick={logout}>logout</button>:
+      user?  <React.Fragment><NavLink to='/account'>Account</NavLink><button className='btn btn-outline-info m-3' onClick={logout}>logout</button></React.Fragment>:
       <NavLink ><Login/></NavLink>
      }
     
