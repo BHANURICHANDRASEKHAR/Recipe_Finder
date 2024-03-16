@@ -16,9 +16,9 @@ const SavedRecipies = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ['breakfast', 'lunch', 'dinner', 'snack'],
+    enum: ['breakfast', 'lunch', 'dinner', 'snack','biryani'],
     required: true
-  },
+  },  
   UserId:{type:String}
 });
 

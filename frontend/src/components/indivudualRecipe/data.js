@@ -1,15 +1,7 @@
 import axios from "axios"
 import getcookie from '../Login/gettoken'
 import { errorfunction, successfunction } from "../../toaster"
-// export function reviewvalidation(review)
-// {
-//     if(review.content.trim()=='' || review.content.rating<0)
-//     {
-//        errorfunction('Please fill all the fields')
-//         return false
-//     }
 
-// }
 export async function store_comments_function(id,reviewdata,setcount,setShow)
 {
    const flag=reviewvalidation(reviewdata)
