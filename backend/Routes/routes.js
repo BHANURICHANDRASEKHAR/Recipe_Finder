@@ -4,7 +4,7 @@ const Authenticate=require('../Controllers/Authenticate.js');
 const {Add_contributes}=require('../Controllers/contributes.js');
 const {Update_user}=require('../Controllers/User_Update.js');
 const {Mail}=require('../Controllers/Mail.js');
-const {getOTP}=require('../Controllers/getotp.js');
+const otp=require('../Controllers/getotp.js');
 const {Add_comments}=require('../Controllers/comments.js');
 const data=require('../Controllers/send_data.js');
 const Recipies=require('../Models/recipes.js');
@@ -31,7 +31,7 @@ router.post('/sign_up',Authenticate.Sign_up);
 router.post('/sign_in',Authenticate.Sign_in); 
 
 //http://localhost:5000/v1/mail
-router.post('/mail',getOTP,Mail);
+router.post('/mail',otp.getOTP,Mail);
 
 //http://localhost:5000/v1/Verify
 router.post('/Verify',Authenticate.Auth);
@@ -46,6 +46,9 @@ router.post('/comment',Add_comments);
 
 //http://localhost:5000/v1/update
 router.put('/update/:id',Update_user);
+
+//http://localhost:5000/v1/forget_password
+router.put('/forget_password',Authenticate.Forgetpassword);
 
 
 module.exports=router
