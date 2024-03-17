@@ -38,7 +38,7 @@ function Login() {
     if (mode === 'signup') {
       var isValid = sign_upvalidation(userdata);
       if (isValid) {
-       
+        
         getOTP(userdata,setisloading, setOtp, setFlag,setMode);
         setUserData(initialdata)
       }
@@ -46,6 +46,7 @@ function Login() {
       var isloginvalid= signin_upvalidation(userdata);
       if(isloginvalid)
       {
+        
         signin(userdata,setShow,setisloading,setUser);
         setUserData(initialdata)
       }

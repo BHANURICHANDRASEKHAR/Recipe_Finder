@@ -79,7 +79,7 @@ export default function ForgetPassWord({userdata,onChange}) {
 export  function Otp({userdata,onchange,setforgetpasswordotp,otpverication}) {
    function resetPassword()
    {
-    resendotp(userdata,setforgetpasswordotp)
+    resendotp(userdata,setforgetpasswordotp,false)
    }
      
     return (

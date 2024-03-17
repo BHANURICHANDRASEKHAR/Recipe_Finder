@@ -6,7 +6,7 @@ import {resendotp} from './call';
 export default function Otp({userdata,onchange,otpverication,setOtp}) {
     function resentotp()
     {
-        resendotp(userdata, setOtp);
+        resendotp(userdata, setOtp,true);
     }
     return (
        <div className='container'>
