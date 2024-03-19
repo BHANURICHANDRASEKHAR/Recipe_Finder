@@ -6,7 +6,7 @@ import Searchbar from "../Searchbar";
 import Loader from "../../../Loader";
 import '../receipe-home.css'
 export default function Home() {
-  console.log('recipe type page')
+  
 
     const {type}=useParams();
     const [fulldata,setfulldata]=useState([]);

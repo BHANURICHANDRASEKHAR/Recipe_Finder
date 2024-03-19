@@ -9,6 +9,7 @@ const {Add_comments,getcomments,inclikes}=require('../Controllers/comments.js');
 const data=require('../Controllers/send_data.js');
 const Recipies=require('../Models/recipes.js');
 const {verify}=require('../Mildwares/verify.js');
+const {fileupload} = require('../Controllers/fileupload.js');
  const {postsavedrecipes,getsavedrecipes} =require('../Controllers/saverecipes.js')   
 const {getuserdetails}=require('../Controllers/getuserdetails.js')
 //get routes
@@ -26,7 +27,9 @@ router.get('/getId/:id',data.find_by_Id);
 //post routes
 //http://localhost:5000/v1/sign_up
 router.post('/sign_up',Authenticate.Sign_up);
-
+//file upload
+//http://localhost:5000/v1/file_upload
+router.post('/file_upload',fileupload)
 //http://localhost:5000/v1/sign_up
 router.post('/sign_in',Authenticate.Sign_in); 
 //http://localhost:5000/v1/getuserdetails
