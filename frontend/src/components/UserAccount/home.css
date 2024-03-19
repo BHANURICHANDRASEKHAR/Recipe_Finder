@@ -10,7 +10,7 @@ ul li{
   list-style: none;
 }
 .leftbar{
-  border-right: 2px double #949090;
+  border-left: 2px double #949090;
 }
 .userdetails-left{
   box-sizing: content-box;

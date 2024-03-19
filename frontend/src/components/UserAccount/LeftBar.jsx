@@ -8,7 +8,7 @@ export default function LeftBar() {
   const items = location.pathname.split('/');
   
   return (
-    <div className='userdetails-left leftbar'>
+    <div className='userdetails-left '>
       <ul className='div1'>
         {data.map((dataitems, index) => {
           const { name, link, id } = dataitems;

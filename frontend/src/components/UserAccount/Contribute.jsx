@@ -8,14 +8,15 @@ import {datavalidation} from './validation'
 import {savecontributes} from './fetchfunctions'
 export default function Contribute() {
   const initialdata={
-    itemname:'',
-    makingprocess:[],
-    ingredient:[],
+    name:'',
+    making_process:[],
+    ingredients:[],
+    img:''
   
   }
   const initialdata1={
-    makingprocess:'',
-    ingredient:''
+    making_process:'',
+    ingredients:''
   }
   const [contributedata,setcontributedata]=useState(initialdata)
   const[data,setdata]=useState(initialdata1)
@@ -23,7 +24,7 @@ export default function Contribute() {
   {
    setcontributedata({...contributedata,[e.target.name]:e.target.value})
   }
- function ingredient(e)
+ function ingredients(e)
  {
 
    setdata({...data,[e.target.name]:e.target.value})
@@ -56,13 +57,13 @@ export default function Contribute() {
   return (
     <div className='mt-4 w-sm-100'>
     <h4 className='lead'>Contribute a Item</h4>
-    <InputFeild value={contributedata.itemname} label='ItemName' type='text' name='itemname' onchangefunction={onchange} /> 
-    <InputFeild value={data.ingredient} label='Add a Ingrediant' type='text' name='ingredient' onchangefunction={ingredient} /> 
-    <div className='d-flex justify-content-end'><button onClick={change} className='btn btn-outline-primary mb-3' name='ingredient'>Add ingredient</button></div>
-    {contributedata.ingredient.length > 0 && <ListofItems data={contributedata.ingredient}/>}
-    <InputFeild value={data.makingprocess} label='Add a Making Process' type='text' name='makingprocess' onchangefunction={ingredient}  /> 
-    <div className='d-flex justify-content-end'><button onClick={change} className='btn btn-outline-primary' name='makingprocess'>Add Step</button></div>
-    {contributedata.makingprocess.length > 0 && <ListofItems data={contributedata.makingprocess}/>}
+    <InputFeild value={contributedata.name} label='name' type='text' name='name' onchangefunction={onchange} /> 
+    <InputFeild value={data.ingredients} label='Add a Ingrediant' type='text' name='ingredients' onchangefunction={ingredients} /> 
+    <div className='d-flex justify-content-end'><button onClick={change} className='btn btn-outline-primary mb-3' name='ingredients'>Add ingredients</button></div>
+    {contributedata.ingredients.length > 0 && <ListofItems data={contributedata.ingredients}/>}
+    <InputFeild value={data.making_process} label='Add a Making Process' type='text' name='making_process' onchangefunction={ingredients}  /> 
+    <div className='d-flex justify-content-end'><button onClick={change} className='btn btn-outline-primary' name='making_process'>Add Step</button></div>
+    {contributedata.making_process.length > 0 && <ListofItems data={contributedata.making_process}/>}
      <ImgeUpload/>
      <Button variant='success' className='mt-4 w-100' onClick={Submit}>Submit</Button>
     </div>

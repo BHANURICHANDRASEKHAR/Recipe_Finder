@@ -4,6 +4,7 @@ import { ItemList } from "../CardItemsdata";
 import {gettypedata} from '../fetchdata'
 import Searchbar from "../Searchbar";
 import Loader from "../../../Loader";
+import '../receipe-home.css'
 export default function Home() {
   console.log('recipe type page')
 

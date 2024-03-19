@@ -14,7 +14,7 @@ const userlayout =useOutlet()
    <div className="col-sm-4 mt-4 userdetails">
    <LeftBar/>
 </div>
-<div className="col-sm-8 mt-4">
+<div className="col-sm-8 leftbar mt-4">
    {
     userlayout? <Outlet/>:<Faq/>
    }
