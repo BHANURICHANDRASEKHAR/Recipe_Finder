@@ -25,7 +25,7 @@ async function getsavedrecipes(req,res)
         const {UserId}=req.user
         const r=await SavedRecipies.find({UserId})
 
-        res.status(200).send({size:1,status:true,msg:"Saved successfully",data:r});
+        res.status(200).send({size:r.length,status:true,msg:"Saved successfully",data:r});
     }
     catch(err){
         console.log(err.message)

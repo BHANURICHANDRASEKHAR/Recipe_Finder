@@ -34,12 +34,12 @@ function Login() {
     setUserData({ ...userdata, [e.target.name]: e.target.value });
   }
 
-  function submit() {
+  async function submit() {
     if (mode === 'signup') {
       var isValid = sign_upvalidation(userdata);
       if (isValid) {
         
-        getOTP(userdata,setisloading, setOtp, setFlag,setMode);
+       await getOTP(userdata,setisloading, setOtp, setFlag,setMode);
         setUserData(initialdata)
       }
     } else {

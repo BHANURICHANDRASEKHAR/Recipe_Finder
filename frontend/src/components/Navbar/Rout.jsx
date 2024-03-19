@@ -4,6 +4,7 @@ import HomePage from '../Home/HomePage'
 import Navbar from './Narbar'
 import Loader from '../../Loader'
 import About from '../About/About'
+import {data} from '../UserAccount/data'
 
 //dynamic imports
 const Home=lazy(()=>import('../Recipes/typerecipes/Home'))
@@ -20,7 +21,17 @@ export default function Rout() {
       <Route path='/recipes' element={<Suspense fallback={<Loader/>}><RecipeHomePage/></Suspense>} />
       <Route path='/recipes/:type' element={<Suspense fallback={<Loader/>}><Home/></Suspense>} />
       <Route path='/recipe/:name' element={<Suspense fallback={<Loader/>}><IndivudualRecipeHomePage/></Suspense>} />
-      <Route path='/account'  element={<Suspense fallback={<Loader/>}><UserHomepage/></Suspense>} />
+      <Route path="/account" element={<Suspense fallback={<Loader/>}><UserHomepage/></Suspense>}>
+      {
+        data.map((dataItem, index) => {
+          const { component: Component, link } = dataItem;
+          return (
+            <Route key={index} path={`/account/${link}`} element={<Component/>} />
+          );
+        })
+      }
+    </Route>
+    
       </Routes>
       </React.Fragment>
   )

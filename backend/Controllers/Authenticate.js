@@ -41,7 +41,7 @@ exports.Sign_in=async(req,res)=>{
             else{
  
                 const token=tokencreattion(user)
-              
+                console.log(token);
                 res.status(201).send({status:true,token:token,msg:"Login sucessfull"});
                 }   
            
@@ -94,12 +94,12 @@ exports.Forgetpassword=async(req,res)=>{
                 password:password
             }
           const payload= await users.updateOne({email:user.email},{$set:body});
-          console.log(payload);
+         
             if(payload.modifiedCount>=1) 
             {
               
-              const token= await tokencreattion(user);
-              
+              const token=  tokencreattion(user);
+             
               res.status(200).send({status:true,token:token,msg:"Password reset sucessfull"});
             }
             else{
@@ -113,16 +113,16 @@ exports.Forgetpassword=async(req,res)=>{
 
                                                                                          }
 }
-async function tokencreattion(user)
+ function tokencreattion(user)
 {
-    console.log(user);
+    
     const payload={
         user:{
             username:user.username ,
             UserId:user.id ,
            
         }}
-    const token= await jwt.sign(payload,"chandu");
+    const token=  jwt.sign(payload,"chandu");
 
     return token;
 }

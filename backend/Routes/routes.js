@@ -10,7 +10,7 @@ const data=require('../Controllers/send_data.js');
 const Recipies=require('../Models/recipes.js');
 const {verify}=require('../Mildwares/verify.js');
  const {postsavedrecipes,getsavedrecipes} =require('../Controllers/saverecipes.js')   
-
+const {getuserdetails}=require('../Controllers/getuserdetails.js')
 //get routes
 //http://localhost:5000/v1/get/:type
 router.get('/get/:type',data.send_data_type);
@@ -29,7 +29,8 @@ router.post('/sign_up',Authenticate.Sign_up);
 
 //http://localhost:5000/v1/sign_up
 router.post('/sign_in',Authenticate.Sign_in); 
-
+//http://localhost:5000/v1/getuserdetails
+router.post('/getuserdetails',verify,getuserdetails);
 //http://localhost:5000/v1/mail
 router.post('/mail',getOTP,Mail);
 

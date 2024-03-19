@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import Sort from './Model';
-import { FaDirections } from "react-icons/fa";
+import {  FloatButton  } from 'antd'
 export default function Home({actualdata,setactualdata,fulldata}) {
 
   return (
@@ -16,7 +16,7 @@ export default function Home({actualdata,setactualdata,fulldata}) {
 export const ItemList=({actualdata})=>{
   return(
     <div className='col card-data-items111'>
-
+  
     {
      actualdata.map((data,index)=>{
             return(
@@ -35,6 +35,7 @@ export const ItemList=({actualdata})=>{
             )
         })
     }
+    <FloatButton.BackTop />
     </div>
   )
 }

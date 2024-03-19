@@ -2,23 +2,27 @@
 import React,{useState,useContext, useEffect} from 'react'
 import { IoMenu } from "react-icons/io5";
 import { GiCancel } from "react-icons/gi";
-import { NavLink } from 'react-router-dom';
+import { NavLink, redirect } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { UserContext } from '../../Context/UserContext';
 import './navbar.css'
 import gettoken,{clearcookie} from '../Login/gettoken'
-
+import { useNavigate } from 'react-router-dom';
 import Login from '../Login/Login';
 export default function Narbar() {
   const [flag,setflag]=useState(true)
   const { user, setUser } = useContext(UserContext); 
+  const navigate=useNavigate()
   function logout()
   {
     clearcookie()
+    console.log('hello')
     setUser(false)
+    navigate('/')
   }
   useEffect(()=>{
    const token= gettoken()
+
    if(token)
    {
     setUser(true)
@@ -27,7 +31,7 @@ export default function Narbar() {
     setUser(false)
    }
   },[user])
-  setUser(true)
+  
   return (
   <div className='container-fluid homepage '>
   <div className="nav container bg-transparent ">
