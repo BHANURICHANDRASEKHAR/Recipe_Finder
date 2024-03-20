@@ -52,7 +52,7 @@ export default function Narbar() {
   <div className="nav-links1  ">
     <NavLink to="/"> Home</NavLink>
     <NavLink to='/recipes'>Recipes</NavLink>
-     <NavLink to='/about'>About Us</NavLink>
+    
      {
       user?  <React.Fragment><NavLink to='/account'>Account</NavLink><button className='btn btn-outline-info m-3' onClick={logout}>logout</button></React.Fragment>:
       <NavLink ><Login/></NavLink>

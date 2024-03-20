@@ -4,10 +4,10 @@ async function postsavedrecipes(req,res)
 {
    
     try{
-        const {post_id,img,type,Itemname}=req.body;
+        const {post_id,img,type,name}=req.body;
         const {UserId}=req.user
         const r=await SavedRecipies.create({
-            post_id,img,type,Itemname,UserId
+            post_id,img,type,name,UserId
         });
         
         res.status(200).send({size:1,status:true,msg:"Saved successfully"});

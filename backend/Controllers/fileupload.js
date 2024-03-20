@@ -1,43 +1,54 @@
 const admin = require('firebase-admin');
+const contributes = require('../Models/contributes');
 
-exports.fileupload = async (req, res) => {
-    try {
-        const file = req.files.file;
-        console.log(file);
+exports.fileupload=async(req,res)=>{
 
+    try{
+        // const f=new FormData();
+        //  f.append('file',req.body.img);
+        
+        const file=req.body.file;
+        console.log(req.files);
+
+  
         if (!file) {
-            return res.status(400).send('No file uploaded.');
+          console.log('Please select')
+            res.send('No file uploaded.');
         }
 
-        // Initialize Firebase Admin SDK
-        
+   
         const bucket = admin.storage().bucket();
-        const filename = `User_Profiles/${Date.now()}_${file.name}`;
+        const filename = `${`contributes`}/${Date.now()}_${file.name}`;
         const fileUpload = bucket.file(filename);
 
-        // Uploading file to Cloud Storage
-        const [fileUploadResponse] = await fileUpload.save(file.data, {
-            metadata: {
-                contentType: file.mimetype
-            }
-        });
-
-        // Generating signed URL
         const downloadURL = await fileUpload.getSignedUrl({
-            action: 'read',
-            expires: '03-01-2025'
-        });
+          action: 'read',
+          expires: '03-01-2025', 
+      });
 
-        res.status(200).send({
-            status: true,
-            msg: 'File uploaded successfully.',
-            data: downloadURL
+        const stream = fileUpload.createWriteStream({
+          metadata: {
+            contentType: file.mimetype
+          }
         });
-    } catch (error) {
-        console.error('File upload error:', error.message);
-        res.status(500).send({
-            status: false,
-            msg: 'File upload error.'
+    
+        stream.on('error', (err) => {
+          console.error('File upload error:', err);
+        res.send({status:false,msg:'File upload error.'});
         });
-    }
-};
+    
+        const c=stream.on('finish', (e) => {
+        req.imgurl=downloadURL,
+     
+        res.send({status:true,msg:'File upload error.',img:downloadURL});
+       
+        });
+    
+        stream.end(file.data);
+      } 
+      catch (error) 
+      {
+        console.log(error.message);
+      }
+
+}

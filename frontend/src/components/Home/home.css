@@ -19,23 +19,7 @@
     height: 10%;
     width: 10%;
 }
-.span1{
-    position: absolute;
-    top:8%;
-    left: 0;
-    transform: rotate(190deg);
-    height: 180px;
-    width: 220px;
-   background-image: url('../../assets/freshmint.png');
-}
-.span2{
-    position: absolute;
-     top:78.88%;
-     left: 72.8%;
-     height: 180px;
-     width: 180px;
-    background-image: url('../../assets/freshmint.png');
-}
+
 .card-data{
    
     display: grid;

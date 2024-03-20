@@ -1,6 +1,5 @@
 import UserDetails from "./UserDetails"
 import MyContributes from "./MyContributes"
-import SavedRecipes from "./SavedRecipes"
 import Contribute from "./Contribute"
 export const data=[
     {

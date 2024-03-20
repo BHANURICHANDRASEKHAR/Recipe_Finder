@@ -1,7 +1,7 @@
 const users=require('../Models/users.js');
 async function getuserdetails(req, res)
 {
- 
+
   try{
     const {UserId}=req.user;
  

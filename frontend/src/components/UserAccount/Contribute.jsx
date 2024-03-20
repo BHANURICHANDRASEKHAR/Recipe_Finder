@@ -4,6 +4,7 @@ import { errorfunction } from '../../toaster'
 import { MdOutlineAddCircle } from "react-icons/md";
 import ImgeUpload from './ImgeUpload';
 import { Button } from 'react-bootstrap';
+import { FcDeleteDatabase } from "react-icons/fc";
 import {datavalidation} from './validation'
 import {savecontributes} from './fetchfunctions'
 export default function Contribute() {
@@ -20,6 +21,7 @@ export default function Contribute() {
   }
   const [contributedata,setcontributedata]=useState(initialdata)
   const[data,setdata]=useState(initialdata1)
+  const [loading,setloading]=useState(false)
   function onchange(e)
   {
    setcontributedata({...contributedata,[e.target.name]:e.target.value})
@@ -51,32 +53,46 @@ export default function Contribute() {
   const flag=datavalidation(contributedata)
   if(flag)
   {
-    savecontributes(contributedata)
+    savecontributes(contributedata,setloading)
   }
  }
   return (
     <div className='mt-4 w-sm-100'>
     <h4 className='lead'>Contribute a Item</h4>
-    <InputFeild value={contributedata.name} label='name' type='text' name='name' onchangefunction={onchange} /> 
+    <InputFeild value={contributedata.name} label='Item name' type='text' name='name' onchangefunction={onchange} /> 
     <InputFeild value={data.ingredients} label='Add a Ingrediant' type='text' name='ingredients' onchangefunction={ingredients} /> 
     <div className='d-flex justify-content-end'><button onClick={change} className='btn btn-outline-primary mb-3' name='ingredients'>Add ingredients</button></div>
-    {contributedata.ingredients.length > 0 && <ListofItems data={contributedata.ingredients}/>}
+    {contributedata.ingredients.length > 0 && <ListofItems data={contributedata.ingredients} setdata={setcontributedata} name='ingredients'  fulldata={contributedata}/>}
     <InputFeild value={data.making_process} label='Add a Making Process' type='text' name='making_process' onchangefunction={ingredients}  /> 
     <div className='d-flex justify-content-end'><button onClick={change} className='btn btn-outline-primary' name='making_process'>Add Step</button></div>
-    {contributedata.making_process.length > 0 && <ListofItems data={contributedata.making_process}/>}
-     <ImgeUpload/>
-     <Button variant='success' className='mt-4 w-100' onClick={Submit}>Submit</Button>
+    {contributedata.making_process.length > 0 && <ListofItems data={contributedata.making_process} setdata={setcontributedata}  fulldata={contributedata} name='making_process'/>}
+     <ImgeUpload contributedata={contributedata} setloading={setloading} setcontributedata={setcontributedata} />
+     <Button variant='success' className='mt-4 w-100' onClick={Submit}>{loading?'Loading....':'Submit'}</Button>
     </div>
     
   )
 }
-const ListofItems=({data})=>{
+const ListofItems=({data,fulldata,setdata,name})=>{
+  // function deleteItem(index)
+  // {
+  //  data.splice(index, 1);
+  //  setdata({
+  //   ...fulldata,
+  //  [name]: [...fulldata[name], data],
+  // });
+ 
+  // }
+  // console.log(data)
+  // console.log(fulldata)
   return(
     <ul>
     {
-      data.map((item,index)=>{
+      data.length > 0 && data.map((item,index)=>{
+        console.log('rendered')
         return(
-          <li key={index}><MdOutlineAddCircle className='text-success icon'/>{item}</li>
+          <li key={index} className='p-2 w-100 itemsprocessing '><MdOutlineAddCircle className='text-success icon'/>{item}<FcDeleteDatabase className='delete'
+       
+          /></li>
         )
       })
     }

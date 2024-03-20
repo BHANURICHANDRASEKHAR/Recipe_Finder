@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import { Avatar} from 'antd'
 import {fetchuserdata,getsaverecipe} from './fetchfunctions'
 import DataItems from './DataItems'
+import Results from '../../../Results'
 
 export default function UserDetails() {
   const [userdata,setuserdata]=useState([])
@@ -57,10 +58,11 @@ const SavedRecipes=()=>{
   useEffect(()=>{
     getsaverecipe(setsavedrecipes,setloader)
   },[])
+  console.log(savedrecipes)
   return(
     <div className='text-danger'>
     {
-      setsavedrecipes.length>0&&<DataItems actualdata={savedrecipes}/>
+      savedrecipes.length > 0 ? <DataItems actualdata={savedrecipes}/>:<Results title='No saved recipes found' subTitle='if you want go to recipes'/>
     }
     </div>
   )

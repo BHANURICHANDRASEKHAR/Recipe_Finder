@@ -21,9 +21,11 @@ export default function Items({ itemdata,type }) {
      const data = itemdata[key];
      return (
        <div className='container text-white mt-5' key={index+index}>
-         <div className='row'>
+      {/* 
+    <div className='row'>
            <Language setLanguageData={setLanguageData} languageData={languageData}/>
          </div>
+        */}   
          <Images data={data} languageData={languageData}/>
          <div className='row'>    
          <div className='col-sm-6 mt-3'>

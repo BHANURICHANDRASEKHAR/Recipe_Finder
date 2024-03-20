@@ -1,7 +1,7 @@
 const express=require('express');
 const router=express.Router();
 const Authenticate=require('../Controllers/Authenticate.js');
-const {Add_contributes}=require('../Controllers/contributes.js');
+const {Add_contributes,Get_contributes}=require('../Controllers/contributes.js');
 const {Update_user}=require('../Controllers/User_Update.js');
 const {Mail}=require('../Controllers/Mail.js');
 const {getOTP}=require('../Controllers/getotp.js');
@@ -28,7 +28,7 @@ router.get('/getId/:id',data.find_by_Id);
 //http://localhost:5000/v1/sign_up
 router.post('/sign_up',Authenticate.Sign_up);
 //file upload
-//http://localhost:5000/v1/file_upload
+// //http://localhost:5000/v1/file_upload
 router.post('/file_upload',fileupload)
 //http://localhost:5000/v1/sign_up
 router.post('/sign_in',Authenticate.Sign_in); 
@@ -41,8 +41,9 @@ router.post('/mail',getOTP,Mail);
 router.post('/Verify',Authenticate.Auth);
 
 //http://localhost:5000/v1/contributes
-router.post('/contributes',Add_contributes);  
-
+router.post('/contributes',verify,Add_contributes); 
+//http://localhost:5000/v1/getcontributes 
+router.post('/getcontributes',verify,Get_contributes);
 //http://localhost:5000/v1/comment
 router.post('/comment',verify,Add_comments);
 //http://localhost:5000/v1/getcomment

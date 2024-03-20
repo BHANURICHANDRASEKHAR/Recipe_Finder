@@ -1,13 +1,21 @@
-import React, { useEffect } from 'react';
-import Avatar from 'antd/es/avatar/avatar';
-import { Outlet,useOutlet } from 'react-router-dom'
+import React, { useEffect, useContext  } from 'react';
+import { Outlet,useOutlet,redirect,useNavigate } from 'react-router-dom'
+import { UserContext } from '../../Context/UserContext';
 import './home.css'
 import LeftBar from './LeftBar';
 import Faq from './Faq';
-
+import { errorfunction } from '../../toaster';
 const Home = () => {
-const userlayout =useOutlet()
-
+  const { user, setUser } = useContext(UserContext); 
+  const navigate=useNavigate()
+ useEffect(()=>{
+  if(!user)
+  {
+    errorfunction('You must Login to visit this')
+    navigate('/')
+  }
+ },[])
+ const userlayout =useOutlet()
   return (
     <div className='container home bg-white text-dark  mt-5 '>
    <div className='row'>

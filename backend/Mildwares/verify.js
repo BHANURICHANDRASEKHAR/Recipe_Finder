@@ -3,9 +3,9 @@ const jwt=require('jsonwebtoken')
 exports.verify=async(req,res,next)=>{
  
     try{
-       
+      
         const {token}=req.body;
-       
+      
         if(!token){
          
             res.status(200).send({status:false,msg:"Invalid token"});
@@ -13,7 +13,7 @@ exports.verify=async(req,res,next)=>{
         const d=jwt.verify(token,"chandu");
        
         req.user=d.user;
-    
+
         next();
         }
 

@@ -75,7 +75,7 @@ export async function saverecipe(post,setcount,saveddata)
             const data={
                 post_id:post._id,
                 img:post.img,
-                Itemname:post.name,
+                name:post.name,
                 type:post.type,
                 token
               }

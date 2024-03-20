@@ -5,7 +5,7 @@ const SavedRecipies = new mongoose.Schema({
     type: String,
     required: true
   },
-  Itemname: {
+  name: {
     type: String,
     required: true
   },

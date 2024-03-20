@@ -1,16 +1,18 @@
-const contributes = require('../Models/contributes.js')      
-        
+const Recipies = require('../Models/recipes')      
+const {fileupload} =require('../Controllers/fileupload')
 
 exports.Add_contributes=async(req,res)=>{
     try{
-
-        const {email,name,ingredients,making_process,img}=req.body;
-        const r= await contributes.create({
-            email,
+     
+        const {name,ingredients,making_process,img}=req.body;
+        const {UserId}=req.user;
+        const r= await Recipies.create({
+            UserId,
             name,
+            img,
             ingredients,
             making_process,
-            img
+            
         })
         res.send({status:true,msg:""});
     }
@@ -18,4 +20,18 @@ exports.Add_contributes=async(req,res)=>{
         res.send({status:false,msg:err});
     }
 
+}
+exports.Get_contributes=async (req,res)=>{
+   
+    try{
+        const {UserId}=req.user;
+        
+        const r=await Recipies.find({UserId});
+        
+        res.status(200).send({size:r.length,data:r,status:true,msg:"Done"});
+    }
+    catch(err){
+        
+        res.status(501).send({status:false,Error:err.message});
+    }
 }
