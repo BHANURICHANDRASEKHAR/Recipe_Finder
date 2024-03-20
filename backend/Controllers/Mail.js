@@ -28,9 +28,9 @@ exports.Mail=async(req,res,next)=>{
     <div style="max-width: 600px; margin: 0 auto; background: #f3f8f3;border-radius: 5px;font-family: 'Times New Roman', Times, serif;">
      
         <div style="background-color: red; color:red; padding: 10px; border-radius: 10px 10px 0px 0px;">
-            <img src="https://firebasestorage.googleapis.com/v0/b/react-647c1.appspot.com/o/User_Profiles%2Flogo.png?alt=media&token=e6b4bfd0-cc42-42d9-931c-a35ee0639cbf">
+            <img src="https://firebasestorage.googleapis.com/v0/b/react-647c1.appspot.com/o/mail1.jpg?alt=media&token=0b3188d0-bf3f-4544-b5fd-ba97a9cbf032">
         </div>
-        <img src="https://firebasestorage.googleapis.com/v0/b/react-647c1.appspot.com/o/User_Profiles%2F25224_294121_10150_image.jpg?alt=media&token=64c363c2-3a20-418f-b34e-e3f4b5b3cb0f" style="width:100%;object-fit:contain;">
+        <img src="https://firebasestorage.googleapis.com/v0/b/react-647c1.appspot.com/o/25224_294121_10150_image.jpg?alt=media&token=4ae50e7b-a745-4382-96cd-2b208f9b59b0" style="width:100%;object-fit:contain;">
         <div style="text-align: center">
             <p >Hi <b>{name}</b></p>
             <p >Welcome To RecipesShare<br/></p>
