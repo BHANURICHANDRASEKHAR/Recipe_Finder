@@ -4,11 +4,10 @@ const contributes = require('../Models/contributes');
 exports.fileupload=async(req,res)=>{
 
     try{
-        // const f=new FormData();
-        //  f.append('file',req.body.img);
         
-        const file=req.body.file;
-        console.log(req.files);
+        const file=req.files.file;
+       
+        console.log(file);
 
   
         if (!file) {
@@ -16,9 +15,8 @@ exports.fileupload=async(req,res)=>{
             res.send('No file uploaded.');
         }
 
-   
         const bucket = admin.storage().bucket();
-        const filename = `${`contributes`}/${Date.now()}_${file.name}`;
+        const filename = `${`contributes`}/${Date.now()}`;
         const fileUpload = bucket.file(filename);
 
         const downloadURL = await fileUpload.getSignedUrl({

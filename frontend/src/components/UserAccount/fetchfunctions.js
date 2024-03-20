@@ -98,6 +98,7 @@ try{
   }
   else{
     setloader(false);
+    
   }
  }
 }
@@ -113,12 +114,14 @@ export function imageupload(formData,contributedata,setcontributedata,setloading
   .then(response => {
      if(response.data.status)
      {
-   
+    
       setcontributedata({...contributedata,['img']:response.data.img[0]})
       setloading(false)
+       successfunction('image uploaded successfully')
      }
      else{
        setloading(false)
+       errorfunction('image uploaded unsuccessfull')
      }
   })
   .catch(error => {

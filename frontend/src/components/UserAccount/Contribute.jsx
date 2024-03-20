@@ -90,9 +90,7 @@ const ListofItems=({data,fulldata,setdata,name})=>{
       data.length > 0 && data.map((item,index)=>{
         console.log('rendered')
         return(
-          <li key={index} className='p-2 w-100 itemsprocessing '><MdOutlineAddCircle className='text-success icon'/>{item}<FcDeleteDatabase className='delete'
-       
-          /></li>
+          <li key={index} className='p-2 w-100 itemsprocessing '><MdOutlineAddCircle className='text-success icon'/>{item}</li>
         )
       })
     }
