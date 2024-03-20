@@ -9,19 +9,19 @@ import { sign_upvalidation,signin_upvalidation} from './uservalidations';
 import SignupInputFeilds from './Signup';
 import { errorfunction } from '../../toaster';
 import ForgetPassWord from './ForgetPassWord';
+export const initialdata={
+  email: '',
+  name: '',
+  password: '',
+  confirmPassword: '',
+  otp:'',
 
+}
 function Login() {
   const { show,setShow, setUser } = useContext(UserContext); 
   const [isLoading,setisloading]=useState(false)
   const [mode, setMode] = useState('signin'); 
-  const initialdata={
-    email: '',
-    name: '',
-    password: '',
-    confirmPassword: '',
-    otp:'',
-    type:mode=='signin' ? false : true
-  }
+  
   const [userdata, setUserData] = useState(initialdata);
 
   const [flag, setFlag] = useState(false); 
@@ -40,7 +40,7 @@ function Login() {
       if (isValid) {
         
        await getOTP(userdata,setisloading, setOtp, setFlag,setMode);
-        setUserData(initialdata)
+      
       }
     } else {
       var isloginvalid= signin_upvalidation(userdata);
@@ -57,8 +57,8 @@ async function otpverication()
   
   if(otp==userdata.otp)
   {
-   await signup(userdata,setMode);
-    setUserData(initialdata)
+   await signup(userdata,setMode,setUserData);
+  
     setFlag(false)
   }
   else
@@ -106,6 +106,5 @@ async function otpverication()
     </React.Fragment>
   );
 }
-
 export default Login;
 

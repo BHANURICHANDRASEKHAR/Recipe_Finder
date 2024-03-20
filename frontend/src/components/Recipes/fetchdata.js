@@ -3,7 +3,7 @@ import axios from 'axios'
 export default async function fetchdata(setactualdata,setfulldata,setloader)
 {
     setloader(true)
-    const data=await axios.get('http://localhost:5000/v1/get');
+    const data=await axios.get('https://recipe-finder-1.onrender.com/v1/get');
     const result=await data.data.data
     setloader(false)
     setfulldata(result)
@@ -26,7 +26,7 @@ export function  filtereddata(fulldata,setactualdata,targetvalue)
 export  async function gettypedata(setactualdata,type,setloader)
 {
     setloader(true)
-    const data=await axios.get(`http://localhost:5000/v1/get/${type}`);
+    const data=await axios.get(`https://recipe-finder-1.onrender.com/v1/get/${type}`);
     const result=await data.data.data
     setloader(false)
     setactualdata(result)

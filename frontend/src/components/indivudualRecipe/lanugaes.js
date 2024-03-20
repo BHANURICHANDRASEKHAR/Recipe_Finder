@@ -55,16 +55,25 @@ export async function chagelaunge(languageData, setLanguageData,currentLanguage,
 }
 
 
-export  async function fetchdatafromdatabase(setdata,id)
+export  async function fetchdatafromdatabase(setdata,id,setloader)
 {
  try{
-  const result=await axios.get(`http://localhost:5000/v1/getId/${id}`);
-  
+  setloader(true)
+  const result=await axios.get(`https://recipe-finder-1.onrender.com/v1/getId/${id}`);
   const data=await result.data.data;
-    
-    setdata(data)
+    if(result.data.status)
+    {
+      setdata(data)
+  setloader(false)
+    }
+    else{
+      setloader(false)
+    }
  }
- catch (error) {console.log(error.message);}
+ catch (error) {
+  setloader(false)
+  console.log(error.message);
+}
 
 
 }

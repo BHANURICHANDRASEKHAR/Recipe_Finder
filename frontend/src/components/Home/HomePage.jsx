@@ -5,7 +5,7 @@ import Testominials from './Testominials'
 import CardItems from './CardItems'
 import Loader from '../../Loader'
 export default function HomePage() {
-  console.log('home Page')
+
   return (
    <React.Fragment>
    <Content/>

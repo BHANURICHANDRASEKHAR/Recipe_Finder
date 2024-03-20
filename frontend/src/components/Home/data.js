@@ -11,14 +11,7 @@ export const carddata=[
   ]
   
 
-//   [
-//     { _id: 'breakfast', count: 41, name: 'breakfast',img:'https://th.bing.com/th?id=OIP.ykgq00prxubh3_9r2aWRfwHaE_&w=304&h=205&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2' }
-// ,
-//    { _id: 'lunch', count: 50, name: 'Main Course',img:'https://th.bing.com/th?id=OIP.7nsp0j2AfkmNv56p0CiWIwHaHV&w=251&h=248&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2' },
-//    { _id: 'biryani', count: 25, name: 'biryani',img:'https://th.bing.com/th?id=OIP.z8xC8D1t1D6045Ps2hbxywHaEz&w=310&h=201&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2' },
-//    { _id: 'sweets', count: 20, name: 'sweets',img:'https://th.bing.com/th?id=OIP.azzdQXIsh-_9tGXV06O6dQAAAA&w=276&h=226&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2' },
 
-//   ]
 export const logodata=[
   {
     id:1,

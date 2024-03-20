@@ -14,7 +14,7 @@ const transpoter=nodemailer.createTransport(nodeConfig);
 exports.Mail=async(req,res,next)=>{
 
 
-    const {email,name}=req.body;
+    const {email,username}=req.body;
 
     const info=`<!DOCTYPE html>
     <html lang="en">
@@ -28,11 +28,11 @@ exports.Mail=async(req,res,next)=>{
     <div style="max-width: 600px; margin: 0 auto; background: #f3f8f3;border-radius: 5px;font-family: 'Times New Roman', Times, serif;">
      
         <div style="background-color: red; color:red; padding: 10px; border-radius: 10px 10px 0px 0px;">
-            <img src="https://firebasestorage.googleapis.com/v0/b/react-647c1.appspot.com/o/mail1.jpg?alt=media&token=0b3188d0-bf3f-4544-b5fd-ba97a9cbf032">
+            <img src="https://firebasestorage.googleapis.com/v0/b/react-647c1.appspot.com/o/logo.png?alt=media&token=ad7899f0-5a53-4139-81c4-2a1f185d8122">
         </div>
         <img src="https://firebasestorage.googleapis.com/v0/b/react-647c1.appspot.com/o/25224_294121_10150_image.jpg?alt=media&token=4ae50e7b-a745-4382-96cd-2b208f9b59b0" style="width:100%;object-fit:contain;">
         <div style="text-align: center">
-            <p >Hi <b>{name}</b></p>
+            <p >Hi <b>${username}</b></p>
             <p >Welcome To RecipesShare<br/></p>
             <p >You can also sign up manually by entering the following OTP</p>
             <div style="display: flex; justify-content: center; align-items: center; margin-top: 10px;"><div style="height: 30px; width: 300px; border: 4px dotted red; margin-left: 10px;text-align: center; font-size: 22px;padding: 4px; letter-spacing: 5px;">${req.app.locals.OTP}</div></div>
@@ -42,7 +42,7 @@ exports.Mail=async(req,res,next)=>{
             <p style="margin-top: 10px;">If you did not make this request, you can safely ignore this message</p>
         </div>
         <div style="height:80px; background-color: black;padding: 10px; display: flex;justify-content: center; border-radius: 0px 0px 10px 10px;" >
-            <img src="https://firebasestorage.googleapis.com/v0/b/react-647c1.appspot.com/o/User_Profiles%2Flogo2.png?alt=media&token=911d6a35-5109-4f09-b44e-4c54aa416204" style="width: 250px; height: inherit; align-items: center;"/>
+            <img src="https://firebasestorage.googleapis.com/v0/b/react-647c1.appspot.com/o/Mail2.jpg?alt=media&token=1b02c8d8-8043-4104-8f0c-b1f969c74766" style="width: 250px; height: inherit; align-items: center;"/>
         </div>
     </div>
     

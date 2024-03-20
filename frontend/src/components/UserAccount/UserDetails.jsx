@@ -3,7 +3,7 @@ import { Avatar} from 'antd'
 import {fetchuserdata,getsaverecipe} from './fetchfunctions'
 import DataItems from './DataItems'
 import Results from '../../../Results'
-
+import Loader from '../../Loader'
 export default function UserDetails() {
   const [userdata,setuserdata]=useState([])
   const [loader,setloader]=useState(false)
@@ -14,7 +14,7 @@ export default function UserDetails() {
   return (
     <div className='container mt-4'>
    {
-    userdata.length > 0&&<Details data={userdata}/>
+    userdata.length > 0 ? <Details data={userdata}/>:<Loader/>
    }
     </div>
   )
@@ -58,7 +58,7 @@ const SavedRecipes=()=>{
   useEffect(()=>{
     getsaverecipe(setsavedrecipes,setloader)
   },[])
-  console.log(savedrecipes)
+
   return(
     <div className='text-danger'>
     {

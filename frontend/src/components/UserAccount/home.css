@@ -87,8 +87,11 @@ ul li{
 }
 @media (max-width: 568px){
   .leftbar{
-    border-right:none ;
-    border-bottom: 2px double rgb(186, 186, 186);
+    border-left:1px ;
+    
+  }
+  .mt{
+    margin-top: 20px;
   }
   .div1{
     display:flex !important ;

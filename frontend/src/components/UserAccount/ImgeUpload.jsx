@@ -57,14 +57,15 @@
 
 import React, { useState } from 'react';
 import {imageupload} from './fetchfunctions'
+import { MdCloudUpload } from 'react-icons/md';
 const ImageUploadForm = ({contributedata,setcontributedata,setloading}) => {
     const [image, setImage] = useState(null);
 
     const handleImageChange = (e) => {
             
-        console.log(e.target.files[0]);
+     
         setImage(e.target.files[0]);
-        console.log(image);
+       
     };
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -72,16 +73,18 @@ const ImageUploadForm = ({contributedata,setcontributedata,setloading}) => {
       const formData = new FormData();
       formData.append('file', image);
     
-      imageupload(formData,contributedata,setcontributedata,setloading)      
+      imageupload(formData,contributedata,setcontributedata,setloading,image)      
 
      
   };
   
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="file" onChange={handleImageChange} />
-            <button type="submit">Upload</button>
+        <form onSubmit={handleSubmit} className='mt-3'>
+            <div className='row'>
+            <div className='col-sm-6'> <input type="file" onChange={handleImageChange}  /></div>
+            <div className='col-sm-6 mt'>  <button type="submit" className='btn btn-outline-primary'> <MdCloudUpload/> Upload</button></div>
+            </div>
         </form>
     );
 };

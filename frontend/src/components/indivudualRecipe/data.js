@@ -16,10 +16,10 @@ export async function store_comments_function(id,reviewdata,setcount,setShow)
             rating:reviewdata.rating,
             token:token,
           }
-          const result=await axios.post('http://localhost:5000/v1/comment',data);
+          const result=await axios.post('https://recipe-finder-1.onrender.com/v1/comment',data);
         
           const resultdata=await result.data;
-          console.log(resultdata)
+      
            setcount((prev)=>prev+1)
     }
     else{
@@ -27,13 +27,11 @@ export async function store_comments_function(id,reviewdata,setcount,setShow)
        setShow(true)
     }
    }
-   else{
-    console.log('error occured')
-   }
+   
 }
 export async function getcomments(id, setreviewsdata,setreviewscount)
 {
-    const result=await axios.get(`http://localhost:5000/v1/getcomments/${id}`)
+    const result=await axios.get(`https://recipe-finder-1.onrender.com/v1/getcomments/${id}`)
     const data=await result.data;
     setreviewsdata(data.data)
  
@@ -57,7 +55,7 @@ export async function likescount(setreviewsdata,UserId,post_id,likes)
         post_id:post_id,
         likes:likes
     }
- const result=  await axios.post('http://localhost:5000/v1/inclikes',likesdata)
+ const result=  await axios.post('https://recipe-finder-1.onrender.com/v1/inclikes',likesdata)
  const data=await result.data;
  setreviewsdata(data.data)
    
@@ -79,7 +77,7 @@ export async function saverecipe(post,setcount,saveddata)
                 type:post.type,
                 token
               }
-              const result=await axios.post('http://localhost:5000/v1/saverecipe',data);
+              const result=await axios.post('https://recipe-finder-1.onrender.com/v1/saverecipe',data);
               const resultdata=await result.data;
               if(resultdata.status)
               {
@@ -110,7 +108,7 @@ export async function getsaverecipe(post,setflag,setsaveddata)
             token:token,
           }
           
-          const result=await axios.post('http://localhost:5000/v1/getsaverecipe',data);
+          const result=await axios.post('https://recipe-finder-1.onrender.com/v1/getsaverecipe',data);
           const resultdata=await result.data;
        
           if(resultdata.status)

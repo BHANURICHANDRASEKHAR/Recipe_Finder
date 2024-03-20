@@ -19,12 +19,12 @@ export default function Footer() {
    <p className="footer-links p-3">
    <Link to='/'>Home</Link>
    <Link to='/recipes'>Recipes</Link>
-   <Link to='/about'>About us</Link>
+  
   
    </p>
  </div>
 
- <div className="footer-center" style={{fontSize:'20px'}}>
+ <div className="footer-center" style={{fontSize:'20px',textTransform:'capitalize'}}>
 
    <div>
      <i className="fa fa-map-marker"></i>
@@ -33,12 +33,12 @@ export default function Footer() {
 
    <div>
      <i className="fa fa-phone"></i>
-     <p>+91123454787</p>
+     <p>+91 123456789</p>
    </div>
 
    <div>
      <i className="fa fa-envelope"></i>
-     <p><a href="mailto:support@company.com">test@gmail.com</a></p>
+     <p><a href="mailto:bhanurichandu@gmail.com">bhanurichandu@gmail.com</a></p>
    </div>
 
  </div>
@@ -47,19 +47,20 @@ export default function Footer() {
 
    <p className="footer-company-about">
      <span>About the company</span>
-     Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+     "At RecipeShare, we're all about delicious recipes and community. Join us to share, discover, and enjoy cooking together!"
    </p>
 
    <div className="footer-icons">
 
-     <a href="#"><FaGithub/></a>
-     <a href="#"><FaLinkedin/></a>
+     <a href="https://github.com/BHANURICHANDRASEKHAR"><FaGithub/></a>
+     <a href="https://www.linkedin.com/in/murali-undela-6311a8269/"><FaLinkedin/></a>
      
 
    </div>
 
  </div>
  <p className="footer-company-name text-dark m-3">RecipeShare © 2024</p>
+ <p className="footer-company-name text-dark m-3 text-center lead">Developed By U.Murali && B.Chandu</p>
 
 </footer></div>
     </React.Fragment>

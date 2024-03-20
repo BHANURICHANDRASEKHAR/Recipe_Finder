@@ -11,7 +11,7 @@ export async function fetchuserdata(setuserdata,setloader)
     if(token)
     {
        
-        const result=await axios.post("http://localhost:5000/v1/getuserdetails",userdata);
+        const result=await axios.post("https://recipe-finder-1.onrender.com/v1/getuserdetails",userdata);
         const data=await result.data.data;
         setuserdata(data);
         setloader(false);
@@ -36,7 +36,7 @@ export async function getsaverecipe(setsaveddata,setloading)
             token:token,
           }
           
-          const result=await axios.post('http://localhost:5000/v1/getsaverecipe',data);
+          const result=await axios.post('https://recipe-finder-1.onrender.com/v1/getsaverecipe',data);
           const resultdata=await result.data;
        
           if(resultdata.status)
@@ -66,7 +66,7 @@ console.log(data)
     
   }
   console.log(userdata)
-  const result=await axios.post('http://localhost:5000/v1/contributes',userdata);
+  const result=await axios.post('https://recipe-finder-1.onrender.com/v1/contributes',userdata);
   const resultdata=await result.data;
  
   if(resultdata.status)
@@ -88,7 +88,7 @@ try{
   const data={      
     token:token,
   }
-  const result=await axios.post('http://localhost:5000/v1/getcontributes',data);
+  const result=await axios.post('https://recipe-finder-1.onrender.com/v1/getcontributes',data);
   const resultdata=await result.data;
  
   if(resultdata.status)
@@ -107,10 +107,12 @@ catch(err)
   console.log(err.message )
 }
 }
-export function imageupload(formData,contributedata,setcontributedata,setloading)
+export function imageupload(formData,contributedata,setcontributedata,setloading,image)
 {
-  setloading(true);
-  axios.post('http://localhost:5000/v1/file_upload', formData)
+  if(image)
+  {
+    setloading(true);
+  axios.post('https://recipe-finder-1.onrender.com/v1/file_upload', formData)
   .then(response => {
      if(response.data.status)
      {
@@ -126,6 +128,10 @@ export function imageupload(formData,contributedata,setcontributedata,setloading
   })
   .catch(error => {
     setloading(false)
-      console.log('Error: ' + error)
+     
   });
+  }
+  else{
+     errorfunction('Please provide a valid image')
+  }
 }

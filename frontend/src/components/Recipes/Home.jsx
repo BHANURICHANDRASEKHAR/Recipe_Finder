@@ -4,7 +4,7 @@ import './receipe-home.css'
 import fetchdata from './fetchdata';
 import Loader from '../../Loader';
 export default function Home() {
-  console.log('Recipes Page')
+
   const [actualdata,setactualdata]=useState([])
   const [fulldata,setfulldata]=useState([])
   const [loader,setloader]=useState(false)

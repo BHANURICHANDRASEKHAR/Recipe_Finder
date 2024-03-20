@@ -1,24 +1,24 @@
 import axios from "axios";
 import Cookie from 'js-cookie'
 import { errorfunction} from "../../toaster";
+import { initialdata } from "./Login";
  export async function getOTP(userdata,setisloading,setotp,setflag,setMode)
 {
    setisloading(true)
    const userdata1={
       email:userdata.email,
-      name:userdata.name,
+      username:userdata.name,
       password:userdata.password,
       type:true
    }
 
-   const result=await axios.post('http://localhost:5000/v1/mail',userdata1)
+   const result=await axios.post('https://recipe-finder-1.onrender.com/v1/mail',userdata1)
   
    const data=await result.data;
    if(data.status)
    {
       setisloading(false)
       setotp(data.otp)
-      console.log(data.otp)
       setflag(true)
    }
    else{
@@ -36,7 +36,7 @@ export async function resendotp(userdata, setOtp,type)
       type:type
    }
 
-   const result=await axios.post('http://localhost:5000/v1/mail',userdata1)
+   const result=await axios.post('https://recipe-finder-1.onrender.com/v1/mail',userdata1)
    
    const data=await result.data;
    if(data.status)
@@ -50,22 +50,29 @@ export async function resendotp(userdata, setOtp,type)
     
    }
 }
-export async function signup(userdata,setMode)
+export async function signup(userdata,setMode,setuserdata)
 {
-   const user={
-     username:userdata.name,
-      email:userdata.email,
-      password:userdata.password
+   try{
+      const user={
+         username:userdata.name,
+          email:userdata.email,
+          password:userdata.password
+       }
+       const data=await axios.post('https://recipe-finder-1.onrender.com/v1/sign_up',user)
+       const result=await data.data;
+       if(result.status)
+       {
+          setuserdata(initialdata)
+          setMode('signin')
+       }
+       else{
+         
+          errorfunction(result.msg)
+       }
    }
-   const data=await axios.post('http://localhost:5000/v1/sign_up',user)
-   const result=await data.data;
-   if(result.status)
+   catch(e)
    {
-      setMode('signin')
-   }
-   else{
-      console.log('error',result)
-      errorfunction(result.msg)
+      console.log(e.message)
    }
 }
 export async function signin(userdata,setShow,setisloading,setUser)
@@ -75,8 +82,8 @@ export async function signin(userdata,setShow,setisloading,setUser)
        email:userdata.email,
        password:userdata.password
     }
-    console.log(user)
-   const result=await axios.post('http://localhost:5000/v1/sign_in',user)
+    
+   const result=await axios.post('https://recipe-finder-1.onrender.com/v1/sign_in',user)
    const data=await result.data;
   
    if(data.status)
@@ -85,7 +92,7 @@ export async function signin(userdata,setShow,setisloading,setUser)
       Cookie.set('usertoken', data.token, { expires: Infinity });
       setisloading(false)
       setShow(false)
-     setUser(true)
+      setUser(true)
 
    }
    else{
@@ -96,7 +103,7 @@ export async function signin(userdata,setShow,setisloading,setUser)
 export async function forgetpassword(userdata,setisloading,setotp,setflag)
 {
    setisloading(true)
-   console.log('hello')
+   
    const userdata1={
       email:userdata.email,
       name:userdata.name,
@@ -104,14 +111,14 @@ export async function forgetpassword(userdata,setisloading,setotp,setflag)
       type:false
    } 
    
-   const result=await axios.post('http://localhost:5000/v1/mail',userdata1)
+   const result=await axios.post('https://recipe-finder-1.onrender.com/v1/mail',userdata1)
   
    const data=await result.data;
    if(data.status)
    {
       setisloading(false)
       setotp(data.otp)
-      console.log(data.otp)
+     
       setflag(true)
    }
    else{
@@ -122,7 +129,7 @@ export async function forgetpassword(userdata,setisloading,setotp,setflag)
 
 export async function resetpassword(userdata,setisloading,setShow, setUser)
 {
-   const result=await axios.put('http://localhost:5000/v1/forget_password',userdata)
+   const result=await axios.put('https://recipe-finder-1.onrender.com/v1/forget_password',userdata)
    setisloading(true)
    const data=await result.data;
    if(data.status)
